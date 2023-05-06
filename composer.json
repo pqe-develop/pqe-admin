@@ -1,0 +1,35 @@
+{
+	"name" : "pqe-develop/pqe-admin",
+	"description" : "Framework to manage admin data on laravel apps for PQE Group",
+	"type" : "library",
+	"require" : {
+		"spatie/laravel-medialibrary" : "^9.12",
+		"maatwebsite/excel" : "^3.1",
+		"yajra/laravel-datatables-oracle" : "9.21.2",
+		"adldap2/adldap2-laravel" : "^6.1"
+	},
+	"require-dev" : {
+		"facade/ignition" : "^2.17",
+		"laravel/dusk" : "^6.25",
+		"mockery/mockery" : "^1.5",
+		"nunomaduro/collision" : "^5.11",
+		"phpunit/phpunit" : "^9.6"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Pqe\\Admin\\" : "src/"
+		}
+	},
+	"authors" : [{
+			"name" : "Alessandro Badii",
+			"email" : "a.badii@pqegroup.com"
+		}
+	],
+	"extra" : {
+		"laravel" : {
+			"providers" : [
+				"Pqe\\Admin\\Providers\\PqeAdminAppServiceProvider"
+			]
+		}
+	}
+}

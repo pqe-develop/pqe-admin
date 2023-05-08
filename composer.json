@@ -4,7 +4,6 @@
 	"type" : "library",
 	"license": "MIT",
 	"require" : {
-		"spatie/laravel-medialibrary" : "^9.12",
 		"maatwebsite/excel" : "^3.1",
 		"yajra/laravel-datatables-oracle" : "9.21.2",
 		"adldap2/adldap2-laravel" : "^6.1"

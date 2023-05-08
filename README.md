@@ -27,31 +27,37 @@ php artisan migrate
 
 php artisan db:seed --class="Pqe\Admin\Database\Seeders\DatabaseSeeder"
     
--- composer require laravel/ui
--- composer require laravel/passport
--- php artisan passport:install
--- php artisan vendor:publish --provider="Adldap\Laravel\AdldapServiceProvider"
+composer require laravel/ui
+composer require laravel/passport
+php artisan passport:install
+php artisan vendor:publish --provider="Adldap\Laravel\AdldapServiceProvider"
 
 edit routes/web.api and add this:
     Route::redirect('/', '/login');   // to redirect to login at first time
     Route::get('/home', 'HomeController@index')->name('home');
     
-activate namespace in RouteServiceProvider  
+activate $namespace in RouteServiceProvider  
 
-copy resources/views/templates/home.blade.php to resources/views/home.blade.php
-copy resources/views/templates/admin.blade.php to resources/views/layouts/admin.blade.php
+copy src/resources/views/templates/home.blade.php to resources/views/home.blade.php
+copy src/resources/views/templates/admin.blade.php to resources/views/layouts/admin.blade.php
 
-copy resources/lang/en/template-panel.php to resources/lang/en/panel.php and set internal values
-copy all contents of Toolkit to public
-copy Controllers/template-HomeController.php to app/Http/Controllers/HomeController.php and adapt it
-rm app/Models/User.php
+copy src/resources/lang/en/template-panel.php to resources/lang/en/panel.php and set internal values
+copy src/Toolkit to public
+copy src/Controllers/template-HomeController.php to app/Http/Controllers/HomeController.php and adapt it
+
+rm app/Models/User.php 
 edit config/auth.php 
     App\Models\User => Pqe\Admin\Models\User
 
 php artisan route:cache
+php artisan route:list
 
+php artisan serve
 
 # Usage
+
+/login => to login page
+/admin => to open admin menu
 
 # Samples
 

@@ -10,72 +10,69 @@
         <form method="POST" action="{{ route("users.update", [$user->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <div class="form-group">
-                <label class="required" for="username">{{ trans('pqeAdmin::cruds.user.fields.username') }}</label>
-                <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username" id="username" value="{{ old('username', $user->username) }}" required>
-                @if($errors->has('username'))
-                    <span class="text-danger">{{ $errors->first('username') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.username_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="name">{{ trans('pqeAdmin::cruds.user.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $user->name) }}" required>
-                @if($errors->has('name'))
-                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required">{{ trans('pqeAdmin::cruds.user.fields.status') }}</label>
-                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
-                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('pqeAdmin::global.pleaseSelect') }}</option>
-                    @foreach(Pqe\Admin\Utils\Dropdowns::STATUS_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('status', $user->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <span class="text-danger">{{ $errors->first('status') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.status_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="email">{{ trans('pqeAdmin::cruds.user.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email', $user->email) }}">
-                @if($errors->has('email'))
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.email_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('is_admin') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="is_admin" id="is_admin" value="1" {{ $user->is_admin || old('is_admin', 0) === 1 ? 'checked' : '' }}>
-                    <label for="is_admin">{{ trans('pqeAdmin::cruds.user.fields.is_admin') }}</label>
-                </div>
-                @if($errors->has('is_admin'))
-                    <span class="text-danger">{{ $errors->first('is_admin') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.is_admin_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('external_auth') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="external_auth" value="0">
-                    <input class="form-check-input" type="checkbox" name="external_auth" id="external_auth" value="1" {{ $user->external_auth || old('external_auth', 0) === 1 ? 'checked' : '' }}>
-                    <label for="external_auth">{{ trans('pqeAdmin::cruds.user.fields.external_auth') }}</label>
-                </div>
-                @if($errors->has('external_auth'))
-                    <span class="text-danger">{{ $errors->first('external_auth') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.external_auth_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="password">{{ trans('pqeAdmin::cruds.user.fields.password') }}</label>
-                <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password">
-                @if($errors->has('password'))
-                    <span class="text-danger">{{ $errors->first('password') }}</span>
-                @endif
-                <span class="help-block">{{ trans('pqeAdmin::cruds.user.fields.password_helper') }}</span>
-            </div>
+        <div class="form-group">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.username') }}
+                        </th>
+                        <td>
+                            {{ $user->username }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.name') }}
+                        </th>
+                        <td>
+                            {{ $user->name }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.status') }}
+                        </th>
+                        <td>
+                            {{ Pqe\Admin\Utils\Dropdowns::STATUS_SELECT[$user->status] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.email') }}
+                        </th>
+                        <td>
+                            {{ $user->email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.is_admin') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $user->is_admin ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.external_auth') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $user->external_auth ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('pqeAdmin::cruds.user.fields.email_verified_at') }}
+                        </th>
+                        <td>
+                            {{ $user->email_verified_at }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
             <div class="form-group">
                 <label for="roles">{{ trans('pqeAdmin::cruds.user.fields.roles') }}</label>
                 <div style="padding-bottom: 4px">

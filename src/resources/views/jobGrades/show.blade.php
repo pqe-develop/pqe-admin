@@ -41,7 +41,7 @@
                             {{ trans('pqeAdmin::cruds.jobGrade.fields.job_grade') }}
                         </th>
                         <td>
-                            {{ App\Utils\Dropdowns::JOB_GRADE_SELECT[$jobGrade->job_grade] ?? '' }}
+                            {{ Pqe\Admin\Utils\Dropdowns::JOB_GRADE_SELECT[$jobGrade->job_grade] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -49,7 +49,7 @@
                             {{ trans('pqeAdmin::cruds.jobGrade.fields.job_level') }}
                         </th>
                         <td>
-                            {{ App\Utils\Dropdowns::JOB_LEVEL_SELECT[$jobGrade->job_level] ?? '' }}
+                            {{ Pqe\Admin\Utils\Dropdowns::JOB_LEVEL_SELECT[$jobGrade->job_level] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

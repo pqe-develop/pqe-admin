@@ -7,7 +7,7 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-CurrencyHistory">
+            <table class=" table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th width="10">
@@ -91,30 +91,5 @@
 @endsection
 @section('scripts')
 @parent
-<script>
-    $(function () {
-  let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
-  $.extend(true, $.fn.dataTable.defaults, {
-    orderCellsTop: true,
-    order: [[ 2, 'asc' ]],
-	pageLength: {{ trans('pqeAdmin::config.pgLen') }},
-	lengthMenu: [[ {{ trans('pqeAdmin::config.lenMenu') }} ], [ {{ trans('pqeAdmin::config.desMenu') }}, "All" ]]
-  });
-  let table = $('.datatable-CurrencyHistory:not(.ajaxTable)').DataTable({ buttons: dtButtons })
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
-      $($.fn.dataTable.tables(true)).DataTable()
-          .columns.adjust();
-  });
-  $('.datatable thead').on('input', '.search', function () {
-      let strict = $(this).attr('strict') || false
-      let value = strict && this.value ? "^" + this.value + "$" : this.value
-      table
-        .column($(this).parent().index())
-        .search(value, strict)
-        .draw()
-  });
-})
-
-</script>
 @endsection

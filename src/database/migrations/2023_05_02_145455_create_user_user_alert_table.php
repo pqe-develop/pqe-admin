@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('user_user_alert', function (Blueprint $table) {
+        Schema::create('user_user_alert', function (Blueprint $table) {
             $table->unsignedInteger('user_alert_id')->index('user_alert_id_fk_1705699');
             $table->unsignedInteger('user_id')->index('user_id_fk_1705699');
             $table->boolean('read')->default(false);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('user_user_alert');
+        Schema::dropIfExists('user_user_alert');
     }
 };

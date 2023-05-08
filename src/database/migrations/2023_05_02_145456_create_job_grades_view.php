@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::connection('mysql_2')->statement("CREATE VIEW `job_grades` AS select `admdb`.`job_grades`.`id` AS `id`,`admdb`.`job_grades`.`job_grade_name` AS `job_grade_name`,`admdb`.`job_grades`.`job_grade` AS `job_grade`,`admdb`.`job_grades`.`job_level` AS `job_level`,`admdb`.`job_grades`.`amount` AS `amount`,`admdb`.`job_grades`.`created_at` AS `created_at`,`admdb`.`job_grades`.`updated_at` AS `updated_at` from `admdb`.`job_grades`");
+        DB::statement("CREATE VIEW `job_grades` AS select `admdb`.`job_grades`.`id` AS `id`,`admdb`.`job_grades`.`job_grade_name` AS `job_grade_name`,`admdb`.`job_grades`.`job_grade` AS `job_grade`,`admdb`.`job_grades`.`job_level` AS `job_level`,`admdb`.`job_grades`.`amount` AS `amount`,`admdb`.`job_grades`.`created_at` AS `created_at`,`admdb`.`job_grades`.`updated_at` AS `updated_at` from `admdb`.`job_grades`");
     }
 
     /**
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::connection('mysql_2')->statement("DROP VIEW IF EXISTS `job_grades`");
+        DB::statement("DROP VIEW IF EXISTS `job_grades`");
     }
 };

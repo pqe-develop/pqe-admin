@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('permission_role', function (Blueprint $table) {
+        Schema::create('permission_role', function (Blueprint $table) {
             $table->unsignedInteger('role_id')->index('role_id_fk_1690877');
             $table->unsignedInteger('permission_id')->index('permission_id_fk_1690877');
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('permission_role');
+        Schema::dropIfExists('permission_role');
     }
 };

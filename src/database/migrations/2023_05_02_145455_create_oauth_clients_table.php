@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('oauth_clients', function (Blueprint $table) {
+        Schema::create('oauth_clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('name');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('oauth_clients');
+        Schema::dropIfExists('oauth_clients');
     }
 };

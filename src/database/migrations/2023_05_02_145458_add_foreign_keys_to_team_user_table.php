@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('user_user_alert', function (Blueprint $table) {
-            $table->foreign(['user_alert_id'], 'user_alert_id_fk_1705699')->references(['id'])->on('user_alerts')->onDelete('CASCADE');
+        Schema::table('team_user', function (Blueprint $table) {
+            $table->foreign(['team_id'], 'team_id_fk_1690886')->references(['id'])->on('teams')->onDelete('CASCADE');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('user_user_alert', function (Blueprint $table) {
-            $table->dropForeign('user_alert_id_fk_1705699');
+        Schema::table('team_user', function (Blueprint $table) {
+            $table->dropForeign('team_id_fk_1690886');
         });
     }
 };

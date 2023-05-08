@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('permissions', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->nullable();
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('permissions');
+        Schema::dropIfExists('permissions');
     }
 };

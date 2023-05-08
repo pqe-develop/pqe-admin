@@ -5,7 +5,6 @@ namespace Pqe\Admin\Controllers;
 use Pqe\Admin\Models\Role;
 use Pqe\Admin\Models\Team;
 use Pqe\Admin\Models\User;
-use Pqe\Admin\Requests\StoreUserRequest;
 use Pqe\Admin\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;

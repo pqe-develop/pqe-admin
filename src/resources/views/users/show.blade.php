@@ -36,7 +36,7 @@
                             {{ trans('pqeAdmin::cruds.user.fields.status') }}
                         </th>
                         <td>
-                            {{ App\Utils\Dropdowns::STATUS_SELECT[$user->status] ?? '' }}
+                            {{ Pqe\Admin\Utils\Dropdowns::STATUS_SELECT[$user->status] ?? '' }}
                         </td>
                     </tr>
                     <tr>

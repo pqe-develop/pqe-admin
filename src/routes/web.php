@@ -8,7 +8,8 @@ Route::group([
     'middleware' => [
         'web'
     ]
-], function () {
+],
+function () {
     Route::get('login', 'LoginController@showLoginForm')->name('auth.login');
     Route::post('login', 'LoginController@login')->name('login');
     // Route::get('logout', 'LoginController@logout')->name('logout');
@@ -23,7 +24,8 @@ Route::group([
         'web',
         'auth'
     ]
-], function () {
+],
+function () {
     // Users
     Route::get('/admin', 'UsersController@indexShow')->name('users.index');
     Route::post('users', 'UsersController@store')->name('users.store');

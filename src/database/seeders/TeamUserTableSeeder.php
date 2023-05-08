@@ -1,8 +1,9 @@
 <?php
 
-namespace Database\Seeders;
+namespace Pqe\Admin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TeamUserTableSeeder extends Seeder {
 
@@ -12,9 +13,9 @@ class TeamUserTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        \DB::table('team_user')->delete();
+        DB::table('team_user')->delete();
 
-        \DB::table('team_user')->insert(array(
+        DB::table('team_user')->insert(array(
             0 => array(
                 'team_id' => '1',
                 'user_id' => '2161',

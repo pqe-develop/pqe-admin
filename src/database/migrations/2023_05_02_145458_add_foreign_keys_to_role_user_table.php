@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->table('role_user', function (Blueprint $table) {
+        Schema::table('role_user', function (Blueprint $table) {
             $table->foreign(['role_id'], 'role_id_fk_1690886')->references(['id'])->on('roles')->onDelete('CASCADE');
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->table('role_user', function (Blueprint $table) {
+        Schema::table('role_user', function (Blueprint $table) {
             $table->dropForeign('role_id_fk_1690886');
         });
     }

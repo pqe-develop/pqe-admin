@@ -30,7 +30,7 @@
                 <label class="required">{{ trans('pqeAdmin::cruds.user.fields.status') }}</label>
                 <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
                     <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('pqeAdmin::global.pleaseSelect') }}</option>
-                    @foreach(App\Utils\Dropdowns::STATUS_SELECT as $key => $label)
+                    @foreach(Pqe\Admin\Utils\Dropdowns::STATUS_SELECT as $key => $label)
                         <option value="{{ $key }}" {{ old('status', $user->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>

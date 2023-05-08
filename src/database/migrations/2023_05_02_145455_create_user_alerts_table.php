@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('user_alerts', function (Blueprint $table) {
+        Schema::create('user_alerts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('alert_text');
             $table->string('alert_link')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('user_alerts');
+        Schema::dropIfExists('user_alerts');
     }
 };

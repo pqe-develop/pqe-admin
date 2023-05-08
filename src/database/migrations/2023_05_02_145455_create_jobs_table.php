@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('jobs', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('queue')->index();
             $table->longText('payload');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('jobs');
+        Schema::dropIfExists('jobs');
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('oauth_refresh_tokens', function (Blueprint $table) {
+        Schema::create('oauth_refresh_tokens', function (Blueprint $table) {
             $table->string('id', 100)->primary();
             $table->string('access_token_id', 100)->index();
             $table->boolean('revoked');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('oauth_refresh_tokens');
+        Schema::dropIfExists('oauth_refresh_tokens');
     }
 };

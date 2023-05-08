@@ -1,8 +1,6 @@
 <?php
 namespace Pqe\Admin\Exceptions;
 
-use Pqe;
-
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 

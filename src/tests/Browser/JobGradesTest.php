@@ -13,8 +13,8 @@ class JobGradesTest extends DuskTestCase
         $admin = \App\Models\User::find(1);
         $this->browse(function (Browser $browser) use ($admin) {
             $browser->loginAs($admin);
-            $browser->visit(route('admin.jobgrades.index'));
-            $browser->assertRouteIs('admin.jobgrades.index');
+            $browser->visit(route('pqeAdmin.job-grades.index'));
+            $browser->assertRouteIs('pqeAdmin.job-grades.index');
         });
     }
 }

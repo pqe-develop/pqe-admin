@@ -63,14 +63,6 @@
                                         {{ trans('pqeAdmin::global.edit') }}
                                     </a>
                                 @endcan
-                                @can('user_delete')
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('pqeAdmin::global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('pqeAdmin::global.delete') }}">
-                                    </form>
-                                @endcan
-
                             </td>
                             <td>
                                 {{ $user->username ?? '' }}
@@ -79,7 +71,7 @@
                                 {{ $user->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Utils\Dropdowns::STATUS_SELECT[$user->status] ?? '' }}
+                                {{ Pqe\Admin\Utils\Dropdowns::STATUS_SELECT[$user->status] ?? '' }}
                             </td>
                             <td>
                                 {{ $user->email ?? '' }}
@@ -112,16 +104,6 @@
         </div>
     </div>
 </div>
-@can('user_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('users.create') }}">
-                {{ trans('pqeAdmin::global.add') }} {{ trans('pqeAdmin::cruds.user.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-
 
 
 @endsection

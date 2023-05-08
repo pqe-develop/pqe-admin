@@ -65,7 +65,7 @@
                                 <p>
                                     <i class="fas fa-fw fa-sign-out-alt nav-icon">
                     
-                                    </i>{{ trans('pqeAdmin::pqeAdmin::global.logout') }}
+                                    </i>{{ trans('pqeAdmin::global.logout') }}
                                 </p>
                             </a>
                         </div>

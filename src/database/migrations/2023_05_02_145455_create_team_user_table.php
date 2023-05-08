@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('team_user', function (Blueprint $table) {
+            $table->unsignedInteger('user_id')->index('user_id_fk_1690886');
+            $table->unsignedInteger('team_id')->index('role_id_fk_1690886');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('password_resets');
+        Schema::dropIfExists('team_user');
     }
 };

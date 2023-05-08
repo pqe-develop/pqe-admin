@@ -6,19 +6,17 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyTeamRequest extends FormRequest
-{
-    public function authorize()
-    {
+class MassDestroyTeamRequest extends FormRequest {
+
+    public function authorize() {
         abort_if(Gate::denies('team_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
 
-    public function rules()
-    {
+    public function rules() {
         return [
-            'ids'   => 'required|array',
+            'ids' => 'required|array',
             'ids.*' => 'exists:teams,id',
         ];
     }

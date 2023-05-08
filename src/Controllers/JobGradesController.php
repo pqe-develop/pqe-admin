@@ -2,7 +2,6 @@
 
 namespace Pqe\Admin\Controllers;
 
-use Pqe\Admin\Controllers\Controller;
 use Pqe\Admin\Models\JobGrade;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,5 +21,4 @@ class JobGradesController extends Controller {
 
         return view('pqeAdmin::jobGrades.show', compact('jobGrade'));
     }
-
 }

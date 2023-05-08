@@ -43,10 +43,10 @@
                                 {{ $jobGrade->job_grade_name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Utils\Dropdowns::JOB_GRADE_SELECT[$jobGrade->job_grade] ?? '' }}
+                                {{ Pqe\Admin\Utils\Dropdowns::JOB_GRADE_SELECT[$jobGrade->job_grade] ?? '' }}
                             </td>
                             <td>
-                                {{ App\Utils\Dropdowns::JOB_LEVEL_SELECT[$jobGrade->job_level] ?? '' }}
+                                {{ Pqe\Admin\Utils\Dropdowns::JOB_LEVEL_SELECT[$jobGrade->job_level] ?? '' }}
                             </td>
                             <td>
                                 @can('job_grade_access')
@@ -59,6 +59,14 @@
                                     <a class="btn btn-xs btn-info" href="{{ route('job-grades.edit', $jobGrade->id) }}">
                                         {{ trans('pqeAdmin::global.edit') }}
                                     </a>
+                                @endcan
+
+                                @can('job_grade_edit')
+                                    <form action="{{ route('job-grades.destroy', $jobGrade->id) }}" method="POST" onsubmit="return confirm('{{ trans('pqeAdmin::global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('pqeAdmin::global.delete') }}">
+                                    </form>
                                 @endcan
 
                             </td>
@@ -80,7 +88,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 2, 'asc' ]],
+    order: [[ 3, 'asc' ]],
 	pageLength: {{ trans('pqeAdmin::config.pgLen') }},
 	lengthMenu: [[ {{ trans('pqeAdmin::config.lenMenu') }} ], [ {{ trans('pqeAdmin::config.desMenu') }}, "All" ]]
   });

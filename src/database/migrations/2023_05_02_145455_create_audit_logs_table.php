@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('audit_logs', function (Blueprint $table) {
+        Schema::create('audit_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 45)->nullable();
             $table->text('description');
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('audit_logs');
+        Schema::dropIfExists('audit_logs');
     }
 };

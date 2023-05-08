@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Request;
 use PHPUnit\Util\Json;
 use Carbon\Carbon;
 
-
 class AuthController extends Controller {
 
     /**

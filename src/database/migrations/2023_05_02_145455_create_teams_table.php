@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_2')->create('teams', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->index();
+        Schema::create('teams', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->tinyInteger('personal_team');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_2')->dropIfExists('teams');
+        Schema::dropIfExists('teams');
     }
 };

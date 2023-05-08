@@ -53,7 +53,9 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'pqeAdmin');
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'pqeAdmin');
-        
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+		$this->app->register(SeedServiceProvider::class);
+
         // Add middlewares
         $kernel->pushMiddleware(CheckForMaintenanceMode::class);
         $kernel->pushMiddleware(LogRouteMiddleware::class);

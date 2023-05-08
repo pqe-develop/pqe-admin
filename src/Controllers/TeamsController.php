@@ -25,8 +25,7 @@ class TeamsController extends Controller {
         return view('pqeAdmin::teams.create');
     }
 
-    public function store(StoreTeamRequest $request)
-    {
+    public function store(StoreTeamRequest $request) {
         Team::create($request->all());
 
         return redirect()->route('teams.index');

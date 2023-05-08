@@ -9,7 +9,7 @@
 		"yajra/laravel-datatables-oracle" : "^9.9",
 		"adldap2/adldap2-laravel" : "^6.1",
 		"laravel/ui": "^3.0",
-		"laravel/passport: "^10.4"
+		"laravel/passport": "^10.4"
 	},
 	"require-dev" : {
 		"facade/ignition" : "^2.17",

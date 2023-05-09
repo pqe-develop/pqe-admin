@@ -57,6 +57,7 @@ php artisan serve
 # Usage
 
 /login => to login page
+
 /admin => to open admin menu
 
 # Samples

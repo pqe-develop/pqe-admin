@@ -18,7 +18,7 @@
                                 
                                     <div class="row" style="margin-left: 0.5px;">
                                     @can('user_management_access')
-                                    <form action="{{ route('tables.user-alerts.destroy', $alert->id) }}" method="POST" onsubmit="return confirm('{{ trans('pqeAdmin::global.areYouSure') }}');" style="display: inline-block;">
+                                    <form action="{{ route('user-alerts.destroy', $alert->id) }}" method="POST" onsubmit="return confirm('{{ trans('pqeAdmin::global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <li>
@@ -30,7 +30,7 @@
                                         </li> 
                                     </form>
                                     @endcan
-                                    <form action="{{ route('tables.user-alerts.close', $alert->id) }}" method="POST" style="display: inline-block;">
+                                    <form action="{{ route('user-alerts.close', $alert->id) }}" method="POST" style="display: inline-block;">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="hidden" name="id" value="{{$alert->id}}">
@@ -60,12 +60,15 @@
                             {{auth()->user()->username }} - {{auth()->user()->name }} 
                         </a>
                         <div class="dropdown-menu navbar-expand-lg bg-dark" aria-expanded="navbarDropdownLogout">
+                            <a href="{{ url('/admin')}}" target="_blank" class="dropdown-item bg-dark">
+								<p>
+                                    <i class="fa-solid fa-gears nav-icon"></i>{{ trans('pqeAdmin::global.admin') }}
+								</p>
+							</a>
                             <a href="#" class="dropdown-item bg-dark"
                                 onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                                 <p>
-                                    <i class="fas fa-fw fa-sign-out-alt nav-icon">
-                    
-                                    </i>{{ trans('pqeAdmin::global.logout') }}
+                                    <i class="fas fa-fw fa-sign-out-alt nav-icon"></i>{{ trans('pqeAdmin::global.logout') }}
                                 </p>
                             </a>
                         </div>

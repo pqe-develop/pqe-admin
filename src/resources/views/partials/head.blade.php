@@ -17,5 +17,6 @@
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://kit.fontawesome.com/2c059140a1.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     <link href="{{ asset('favicon.ico') }}" rel="shortcut icon" />

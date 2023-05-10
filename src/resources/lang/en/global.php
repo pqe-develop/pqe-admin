@@ -2,6 +2,7 @@
 
 return [
     'actions'                              => 'Actions',
+    'admin'                                => 'Admin',
     'add'                                  => 'Add',
     'allRightsReserved'                    => 'All rights reserved.',
     'areYouSure'                           => 'Are you sure to delete this item?',

@@ -17,7 +17,6 @@
             <div class="container-fluid" style="margin-top: 12px">
 	            @include('pqeAdmin::partials.menuLeft')
                 @include('pqeAdmin::partials.menuAdmin')
-				<!-- insert app menus here -->
                 @include('pqeAdmin::partials.menuRight')
             </div>
         </nav>

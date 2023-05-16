@@ -23,13 +23,15 @@ Framework to manage some data on laravel apps for PQE Group
 `php artisan migrate` => CAREFUL: users, roles and permissions will be erased if exists !!!!
 
 `php artisan db:seed --class="Pqe\Admin\Database\Seeders\DatabaseSeeder"`
-    
-`composer require laravel/ui
+
+```
+composer require laravel/ui
 composer require laravel/passport
 php artisan passport:install
-php artisan vendor:publish --provider="Adldap\Laravel\AdldapServiceProvider"`
+php artisan vendor:publish --provider="Adldap\Laravel\AdldapServiceProvider"
+```
 
-edit routes/web.php and add this:
+edit `routes/web.php` and add this:
     Route::redirect('/', '/login');   // to redirect to login at first time
     
 activate $namespace in RouteServiceProvider if needed
@@ -38,21 +40,23 @@ copy `src/resources/views/templates/admin.blade.php` to `resources/views/layouts
 
 copy `src/resources/lang/en/template-panel.php` to `resources/lang/en/panel.php` and set internal values
 
-rm app/Models/User.php 
-edit config/auth.php 
+`rm app/Models/User.php` if exists 
+edit `config/auth.php`
     App\Models\User => Pqe\Admin\Models\User
 
-`php artisan route:cache`
-`php artisan route:list`
+```
+php artisan route:cache
+php artisan route:list
 
 php artisan serve (to test)
+```
 
 # Usage
 `/login` => to login page
 
 `/admin` => to open admin menu with _blank to open in another windows
 
--- you can use to get started
+## Resources you can use to get started
 - src/resources/views/templates/home.blade.php => template to copy for home blade
 - src/Controllers/template-HomeController.php => template to copy for Home Controlling (to adapt)
 - src/Toolkit => all js/css for bootstrap

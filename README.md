@@ -48,9 +48,9 @@ php artisan route:list
 php artisan serve (to test)
 
 # Usage
-url(/login) => to login page
+/login => to login page
 
-url(/admin) => to open admin menu with _blank to open in another windows
+/admin => to open admin menu with _blank to open in another windows
 
 -- you can use to get started
 - src/resources/views/templates/home.blade.php => template to copy for home blade

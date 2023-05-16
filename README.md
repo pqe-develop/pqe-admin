@@ -54,7 +54,7 @@ php artisan serve (to test)
 # Usage
 `/login` => to login page
 
-`/admin` => to open admin menu with _blank to open in another windows
+`/admin` => to open admin menu with _blank to open in another window
 
 ## Resources you can use to get started
 - src/resources/views/templates/home.blade.php => template to copy for home blade

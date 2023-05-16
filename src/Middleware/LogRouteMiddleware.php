@@ -17,7 +17,7 @@ class LogRouteMiddleware {
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next) {
-        Log::info($request->fullUrl());
+        Log::debug($request->fullUrl());
 
         return $next($request);
     }

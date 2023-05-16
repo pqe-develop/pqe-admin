@@ -19,7 +19,7 @@ class RoleUserTableSeeder extends Seeder {
                 array(
                     0 => array(
                         'user_id' => '3',
-                        'role_id' => '16',
+                        'role_id' => '1',
                     ),
                     1 => array(
                         'user_id' => '2161',
@@ -27,7 +27,7 @@ class RoleUserTableSeeder extends Seeder {
                     ),
                     2 => array(
                         'user_id' => '2199',
-                        'role_id' => '16',
+                        'role_id' => '1',
                     ),
                 ));
     }

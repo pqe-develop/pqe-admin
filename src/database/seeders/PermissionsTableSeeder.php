@@ -137,6 +137,12 @@ class PermissionsTableSeeder extends Seeder {
                         'created_at' => '2023-04-17 17:26:42',
                         'updated_at' => '2023-04-17 17:26:42',
                     ),
+                    20 => array(
+                        'id' => '1',
+                        'title' => 'admin_access',
+                        'created_at' => '2022-10-06 14:11:46',
+                        'updated_at' => '2022-10-06 14:11:46',
+                    ),
                 ));
     }
 }

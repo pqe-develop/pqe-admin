@@ -24,7 +24,7 @@ class RolesTableSeeder extends Seeder {
                         'updated_at' => '2023-04-17 17:28:20',
                     ),
                     1 => array(
-                        'id' => '16',
+                        'id' => '1',
                         'title' => 'Admin',
                         'created_at' => '2022-08-05 14:50:13',
                         'updated_at' => '2023-04-17 17:24:33',

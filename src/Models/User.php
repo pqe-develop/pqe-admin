@@ -34,7 +34,6 @@ class User extends Authenticatable {
         'remember_token',
         'created_at',
         'updated_at',
-        'team_id'
     ];
 
     protected function serializeDate(DateTimeInterface $date) {
@@ -73,14 +72,4 @@ class User extends Authenticatable {
         return $this->belongsToMany(Team::class);
     }
 
-//     public function teams() {
-//         return $this->belongsToMany(Team::class);
-//     }
-    
-    // public function save(array $options = array()) {
-    // if (isset($this->remember_token))
-    // unset($this->remember_token);
-
-    // return parent::save($options);
-    // }
 }

@@ -60,11 +60,13 @@
                             {{auth()->user()->username }} - {{auth()->user()->name }} 
                         </a>
                         <div class="dropdown-menu navbar-expand-lg bg-dark" aria-expanded="navbarDropdownLogout">
+                            @can('admin_access')
                             <a href="{{ url('/admin')}}" target="_blank" class="dropdown-item bg-dark">
 								<p>
                                     <i class="fa-solid fa-gears nav-icon"></i>{{ trans('pqeAdmin::global.admin') }}
 								</p>
 							</a>
+							@endcan
                             <a href="#" class="dropdown-item bg-dark"
                                 onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                                 <p>

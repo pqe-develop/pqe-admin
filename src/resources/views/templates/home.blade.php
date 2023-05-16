@@ -81,7 +81,7 @@
 
         <a class="float-right navbar-text d-flex d-inline-flex" style="padding-top : auto; font-size:18px ;color: white; color: #ffff;" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
           <i class="fas fa-fw fa-sign-out-alt nav-icon d-inline-flex"> </i> {{
-			trans('pqeAdmin::pqeAdmin::global.logout') }}
+			trans('pqeAdmin::global.logout') }}
         </a>
     <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
       {{ csrf_field() }}

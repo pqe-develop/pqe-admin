@@ -24,10 +24,10 @@ Framework to manage some data on laravel apps for PQE Group
 
 `php artisan db:seed --class="Pqe\Admin\Database\Seeders\DatabaseSeeder"`
     
-`composer require laravel/ui`
-`composer require laravel/passport`
-`php artisan passport:install`
-`php artisan vendor:publish --provider="Adldap\Laravel\AdldapServiceProvider"`
+`composer require laravel/ui
+composer require laravel/passport
+php artisan passport:install
+php artisan vendor:publish --provider="Adldap\Laravel\AdldapServiceProvider"`
 
 edit routes/web.php and add this:
     Route::redirect('/', '/login');   // to redirect to login at first time

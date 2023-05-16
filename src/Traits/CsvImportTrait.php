@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Traits;
+namespace Pqe\Admin\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;

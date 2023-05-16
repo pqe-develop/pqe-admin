@@ -47,17 +47,16 @@ php artisan route:list
 
 php artisan serve (to test)
 
+# Usage
+url(/login) => to login page
+
+url(/admin) => to open admin menu with _blank to open in another windows
+
 -- you can use to get started
 - src/resources/views/templates/home.blade.php => template to copy for home blade
 - src/Controllers/template-HomeController.php => template to copy for Home Controlling (to adapt)
 - src/Toolkit => all js/css for bootstrap
 - src/resources/lang/en => for labeling in english
-
-# Usage
-
-url(/login) => to login page
-
-url(/admin) => to open admin menu with _blank to open in another windows
 
 # Samples
 

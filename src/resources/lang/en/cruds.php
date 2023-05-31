@@ -40,6 +40,7 @@ return [
     ],
     'user' => [
         'title' => 'Users',
+        'titleEdit' => 'Users Edit',
         'title_singular' => 'User',
         'fields' => [
             'id' => 'ID',

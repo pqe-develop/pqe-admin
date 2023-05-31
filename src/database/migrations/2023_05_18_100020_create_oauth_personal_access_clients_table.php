@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('role_user', function (Blueprint $table) {
-            $table->foreign(['role_id'], 'role_id_fk_1690886')->references(['id'])->on('roles')->onDelete('CASCADE');
-        });
+        if (!Schema::hasTable('oauth_personal_access_clients')) {
+            Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('client_id');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('role_user', function (Blueprint $table) {
-            $table->dropForeign('role_id_fk_1690886');
-        });
+        Schema::dropIfExists('oauth_personal_access_clients');
     }
 };

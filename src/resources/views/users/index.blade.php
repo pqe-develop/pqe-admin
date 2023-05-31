@@ -125,7 +125,7 @@
     }],
     orderCellsTop: true,
     order: [[ 2, 'asc' ]],
-	pageLength: {{ trans('pqeAdmin::config.pgLen50') }},
+	pageLength: {{ trans('pqeAdmin::config.pgLen') }},
 	lengthMenu: [[ {{ trans('pqeAdmin::config.lenMenu') }} ], [ {{ trans('pqeAdmin::config.desMenu') }}, "All" ]]
   });
   let table = $('.datatable-User:not(.ajaxTable)').DataTable({ buttons: dtButtons })

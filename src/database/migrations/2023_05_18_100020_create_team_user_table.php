@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('team_user', function (Blueprint $table) {
-            $table->unsignedInteger('user_id')->index('user_id_fk_1690886');
-            $table->unsignedInteger('team_id')->index('role_id_fk_1690886');
-        });
+        if (!Schema::hasTable('team_user')) {
+            Schema::create('team_user', function (Blueprint $table) {
+                $table->unsignedInteger('user_id')->index('user_id_fk_1690886');
+                $table->unsignedInteger('team_id')->index('team_id_fk_1690886_idx');
+                $table->string('team_leader', 45)->nullable();
+            });
+        }
     }
 
     /**

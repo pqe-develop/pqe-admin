@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Logging;
+namespace Pqe\Admin\Logging;
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Log;

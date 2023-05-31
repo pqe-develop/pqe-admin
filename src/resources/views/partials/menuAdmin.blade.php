@@ -99,11 +99,17 @@
                     </a>
                 @endcan
                 @can('user_access')
-                    <a href="{{ route('users.index') }}"
+                    <a href="{{ url('/admin')}}"
                         class="dropdown-item bg-dark {{ request()->is('users') || request()->is('users/*') ? 'active' : '' }}"
                         class="dropdown-item bg-dark">
                         <i class="fa-fw nav-icon fas fa-user"> </i> {{ trans('pqeAdmin::cruds.user.title') }}
-  
+                    </a>
+                @endcan
+                @can('user_create')
+                    <a href="{{ url('/users') }}"
+                        class="dropdown-item bg-dark {{ request()->is('users') || request()->is('users/*') ? 'active' : '' }}"
+                        class="dropdown-item bg-dark">
+                        <i class="fa-fw nav-icon fas fa-user"> </i> {{ trans('pqeAdmin::cruds.user.titleEdit') }}
                     </a>
                 @endcan
                 @can('audit_log_access')

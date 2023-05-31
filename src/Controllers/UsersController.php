@@ -37,7 +37,11 @@ class UsersController extends Controller {
         $user->roles()->sync($request->input('roles', []));
         $user->teams()->sync($request->input('teams', []));
 
-        return redirect()->route('users.index');
+        if (($request->_page == 'edit2')) {
+           return redirect()->route('users.indexEdit');
+        } else {
+           return redirect()->route('users.index');
+        }
     }
 
     public function show(User $user) {

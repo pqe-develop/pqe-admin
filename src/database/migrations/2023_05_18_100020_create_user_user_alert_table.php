@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_user_alert', function (Blueprint $table) {
-            $table->unsignedInteger('user_alert_id')->index('user_alert_id_fk_1705699');
-            $table->unsignedInteger('user_id')->index('user_id_fk_1705699');
-            $table->boolean('read')->default(false);
-            $table->boolean('close')->default(false);
-        });
+        if (!Schema::hasTable('user_user_alert')) {
+            Schema::create('user_user_alert', function (Blueprint $table) {
+                $table->unsignedInteger('user_alert_id')->index('user_alert_id_fk_1705699');
+                $table->unsignedInteger('user_id')->index('user_id_fk_1705699');
+                $table->boolean('read')->default(false);
+                $table->boolean('close')->default(false);
+            });
+        }
     }
 
     /**

@@ -109,14 +109,6 @@ function () {
                 ]
             ]);
 
-    // Job Grades
-    Route::resource('job-grades', 'JobGradesController', [
-        'only' => [
-            'index',
-            'show',
-        ]
-    ]);
-
     // Global Search
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });

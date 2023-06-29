@@ -19,7 +19,7 @@ namespace Pqe\Admin\Utils;
  * @psalm-immutable
  * @psalm-consistent-constructor
  */
-abstract class Enum implements \JsonSerializable
+abstract class EnumUtil implements \JsonSerializable
 {
     /**
      * Enum value

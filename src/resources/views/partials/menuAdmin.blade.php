@@ -61,14 +61,6 @@
   
                     </a>
                 @endcan
-                @can('job_grade_access')
-                    <a href="{{ route('job-grades.index') }}"
-                        class="dropdown-item bg-dark {{ request()->is('tables/job-grades') || request()->is('tables/job-grades/*') ? 'active' : '' }}">
-                        <i class="fa-fw nav-icon fas fa-cogs">
-  
-                        </i> {{ trans('pqeAdmin::cruds.jobGrade.title') }}
-                    </a>
-                @endcan
             </div>
         </li>
     @endcan

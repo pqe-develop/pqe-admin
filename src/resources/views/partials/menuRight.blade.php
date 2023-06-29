@@ -56,10 +56,10 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownLogout" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownLogout" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="font-size:20px;color:white">
                             {{auth()->user()->username }} - {{auth()->user()->name }} 
                         </a>
-                        <div class="dropdown-menu navbar-expand-lg bg-dark" aria-expanded="navbarDropdownLogout">
+                        <div class="dropdown-menu navbar-expand-lg bg-dark" aria-expanded="navbarDropdownLogout"   style="font-size:20px;color:white">
                             @can('admin_access')
                             <a href="{{ url('/admin')}}" target="_blank" class="dropdown-item bg-dark">
 								<p>

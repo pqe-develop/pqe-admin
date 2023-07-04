@@ -147,7 +147,7 @@
         if (!$(this).hasClass('open')) {
             
              $.ajax({
-                url: "{{url('/tables/user-alerts/read')}}",
+                url: "{{url('/user-alerts/read')}}",
                 type: 'get',
                 _token: '{{csrf_token() }}',
                 beforeSend: function(){

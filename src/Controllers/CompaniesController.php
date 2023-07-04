@@ -25,20 +25,4 @@ class CompaniesController extends Controller {
         return view('pqeAdmin::companies.show', compact('company'));
     }
 
-    // WWS means week working string
-    public function getCompanyWWS(Request $request) {
-        $company_id = $request->company_id;
-        # New Rule Based on start date and resource code id
-        $contract = Company::select('week_working_string', 'legal_working_hours')->where('id', $company_id)->first();
-        $data = [];
-        if ($contract) {
-            $data['week_working_string'] = $contract->week_working_string;
-            $data['legal_working_hours'] = $contract->legal_working_hours;
-            return json_encode($data);
-        } else {
-            $data['week_working_string'] = '';
-            $data['legal_working_hours'] = '';
-            return json_encode($data);
-        }
-    }
 }

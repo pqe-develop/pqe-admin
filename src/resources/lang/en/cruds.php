@@ -245,24 +245,6 @@ return [
             'updated_at_helper' => '',
         ]
     ],
-    'jobGrade' => [
-        'title' => 'Job Grades',
-        'title_singular' => 'Job Grade',
-        'fields' => [
-            'id' => 'ID',
-            'id_helper' => '',
-            'job_grade_name' => 'Job Grade Name',
-            'job_grade_name_helper' => '',
-            'job_grade' => 'Job Grade',
-            'job_grade_helper' => '',
-            'job_level' => 'Job Level',
-            'job_level_helper' => '',
-            'created_at' => 'Created at',
-            'created_at_helper' => '',
-            'updated_at' => 'Updated at',
-            'updated_at_helper' => '',
-        ]
-    ],
     'team' => [
         'title' => 'Teams',
         'title_singular' => 'Team',

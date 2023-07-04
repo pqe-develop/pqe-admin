@@ -59,12 +59,6 @@ class PermissionsTableSeeder extends Seeder {
                         'created_at' => '2022-10-06 14:11:47',
                         'updated_at' => '2022-10-06 14:11:47',
                     ),
-                    7 => array(
-                        'id' => '57',
-                        'title' => 'job_grade_access',
-                        'created_at' => '2022-10-06 14:11:47',
-                        'updated_at' => '2022-10-06 14:11:47',
-                    ),
                     8 => array(
                         'id' => '68',
                         'title' => 'permission_access',

@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW `company_country` AS select `admdb`.`company_country`.`company_id` AS `company_id`,`admdb`.`company_country`.`country_id` AS `country_id` from `admdb`.`company_country`");
+        DB::statement("CREATE VIEW company_country AS select admdb.company_country.* from admdb.company_country");
     }
 
     /**
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down()
     {
-        DB::statement("DROP VIEW IF EXISTS `company_country`");
+        DB::statement("DROP VIEW IF EXISTS company_country");
     }
 };

@@ -15,31 +15,16 @@ trait MultiTenantModelTrait {
                         function (Builder $builder) {
                     foreach (auth()->user()->teams->toArray() as $item) {
                         $arrayTeams[] = $item['id'];
+                                $arrayCond[] = "'" . $item['id'] . "'";
                     }
+                            $arrayCond = implode(",", $arrayCond);
                             $field = sprintf('%s.%s', $builder->getQuery()->from, 'team_id');
                             if ($field == 'resources.team_id') {
                     $builder->whereIn($field, $arrayTeams)->orWhere($field, Null);
-//                             } else {
-//                                 // $builder->join('resources', 'resources.id', $fieldJoin)
-//                                 // ->whereIn($fieldTeam, $arrayTeams)->orWhere($fieldTeam, Null)
-//                                 // ->whereNull('resources.deleted_at');
-
-//                                 // $builder->addSelect(
-//                                 // [
-//                                 // 'resource_code_id' => Resource::select('id')->whereColumn('id', $fieldJoin)->whereIn(
-//                                 // $fieldTeam, $arrayTeams)->orWhere($fieldTeam, Null)->whereNull(
-//                                 // 'resources.deleted_at')
-//                                 // ]);
-
-//                                 $builder->whereIn('resource_code_id',
-//                                         function ($query) {
-//                                             foreach (auth()->user()->teams->toArray() as $item) {
-//                                                 $arrayTeams[] = $item['id'];
-//                                             }
-//                                             $query->select('id')->from('resources')->whereIn('resources.team_id',
-//                                                     $arrayTeams)->orWhere('resources.team_id', Null)->whereNull(
-//                                                     'resources.deleted_at');
-//                                         });
+                            } else {
+                                $builder->whereRaw(
+                                        'resource_code_id in (select id from resources where isnull(deleted_at) and (team_id in (' .
+                                        $arrayCond . ') or team_id is null))');
                             }
                         });
             }

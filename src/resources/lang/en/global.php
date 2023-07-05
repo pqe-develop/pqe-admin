@@ -101,7 +101,7 @@ return [
     'assigned_user'                        => 'Assigned (user)',
     'attachment'                           => 'Attachment',
     'axis'                                 => 'Axis',
-    'back_to_list'                         => 'Back to list',
+    'back_to_list'                         => 'Global list',
     'back_to_resources_list'               => 'Back to Resources list',
     'back'                                 => 'Back',
     'basic_crm'                            => 'Basic CRM',
@@ -277,6 +277,4 @@ return [
     'duplicate'                            => 'Duplicate',
     'areYouSurewithStatus'                 => 'Are you sure you want to change the resource status to To Be Deleted? Once the resource record is saved, it will not be accessible to any normal user. Make sure you have deleted any unwanted records related to this resource and click OK if you really want to save the records with the status To Be Deleted.',
     'areYouSuretoClose'                    => 'Are you sure to close this item?',
-    'welcome'                              => 'Welcome to PQE Systems',
-
 ];

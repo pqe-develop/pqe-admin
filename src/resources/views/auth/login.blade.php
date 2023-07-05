@@ -9,7 +9,7 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">
-                {{ trans('pqeAdmin::global.welcome') }}
+                {{ trans('panel.welcome') }}
             </p>
 
             @if(session()->has('message'))

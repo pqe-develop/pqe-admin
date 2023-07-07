@@ -61,6 +61,14 @@
   
                     </a>
                 @endcan
+				@can('dropdown_access')
+    				<a href="{{ route('dropdowns.index') }}"
+    						class="dropdown-item bg-dark {{ request()->is('dropdowns') || request()->is('dropdowns/*') ? 'active' : '' }}">
+    						<i class="fa-fw nav-icon fas fa-cogs">
+      
+    						</i> {{ trans('pqeAdmin::cruds.dropdowns.title') }}
+    				</a>
+				@endcan
             </div>
         </li>
     @endcan

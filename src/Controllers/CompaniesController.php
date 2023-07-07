@@ -4,7 +4,6 @@ namespace Pqe\Admin\Controllers;
 
 use Pqe\Admin\Models\Company;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CompaniesController extends Controller {

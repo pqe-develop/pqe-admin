@@ -14,6 +14,9 @@
 
                     </th>
                     <th>
+                        &nbsp;
+                    </th>
+                    <th>
                         {{ trans('pqeAdmin::cruds.currencyHistory.fields.id') }}
                     </th>
                     <th>
@@ -25,68 +28,41 @@
                     <th>
                         {{ trans('pqeAdmin::cruds.currencyHistory.fields.conversion_rate') }}
                     </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('pqeAdmin::global.search') }}">
-                    </td>
-                    <td>
-                        <select class="search">
-                            <option value>{{ trans('pqeAdmin::global.all') }}</option>
-                            @foreach($currencies as $key => $item)
-                                <option value="{{ $item }}">{{ $item }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <input class="search" type="text" placeholder="{{ trans('pqeAdmin::global.search') }}">
-                    </td>
-                    <td>
-                    </td>
                 </tr>
             </thead>
-                <tbody>
-                    @foreach($currencyHistories as $key => $currencyHistory)
-                        <tr data-entry-id="{{ $currencyHistory->id }}">
-                            <td>
+            <tbody>
+                @foreach($currencyHistories as $key => $currencyHistory)
+                    <tr data-entry-id="{{ $currencyHistory->id }}">
+                        <td>
 
-                            </td>
-                            <td>
-                                {{ $currencyHistory->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currencyHistory->currency->code ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currencyHistory->date_validity ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currencyHistory->conversion_rate ?? '' }}
-                            </td>
-                            <td>
-                                @can('currency_history_access')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('currency-histories.show', $currencyHistory->id) }}">
-                                        {{ trans('pqeAdmin::global.view') }}
-                                    </a>
-                                @endcan
+                        </td>
+                        <td>
+                            @can('currency_history_access')
+                                <a class="btn btn-xs btn-primary" href="{{ route('currency-histories.show', $currencyHistory->id) }}">
+                                    {{ trans('pqeAdmin::global.view') }}
+                                </a>
+                            @endcan
 
-                            </td>
+                        </td>
 
-                        </tr>
-                    @endforeach
-                </tbody>
+                        <td>
+                            {{ $currencyHistory->id ?? '' }}
+                        </td>
+                        <td>
+                            {{ $currencyHistory->currency->code ?? '' }}
+                        </td>
+                        <td>
+                            {{ $currencyHistory->date_validity ?? '' }}
+                        </td>
+                        <td>
+                            {{ $currencyHistory->conversion_rate ?? '' }}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
     </div>
-    </div>
 </div>
-
 
 @endsection
 @section('scripts')

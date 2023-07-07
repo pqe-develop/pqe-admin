@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('countries.index') }}">
+                <a class="btn btn-warning" href="{{ route('countries.index') }}">
                     {{ trans('pqeAdmin::global.back_to_list') }}
                 </a>
 
@@ -59,7 +59,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('countries.index') }}">
+                <a class="btn btn-warning" href="{{ route('countries.index') }}">
                     {{ trans('pqeAdmin::global.back_to_list') }}
                 </a>
             </div>

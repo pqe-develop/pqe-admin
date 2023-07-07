@@ -14,13 +14,13 @@
 
                         </th>
                         <th>
+                            &nbsp;
+                        </th>
+                        <th>
                             {{ trans('pqeAdmin::cruds.permission.fields.id') }}
                         </th>
                         <th>
                             {{ trans('pqeAdmin::cruds.permission.fields.title') }}
-                        </th>
-                        <th>
-                            &nbsp;
                         </th>
                     </tr>
                 </thead>
@@ -29,12 +29,6 @@
                         <tr data-entry-id="{{ $permission->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $permission->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $permission->title ?? '' }}
                             </td>
                             <td>
                                 @can('permission_access')
@@ -59,6 +53,12 @@
 
                             </td>
 
+                            <td>
+                                {{ $permission->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $permission->title ?? '' }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

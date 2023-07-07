@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Pqe\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use DateTimeInterface;

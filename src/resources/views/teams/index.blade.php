@@ -14,13 +14,13 @@
 
                         </th>
                         <th>
+                            &nbsp;
+                        </th>
+                        <th>
                             {{ trans('pqeAdmin::cruds.team.fields.id') }}
                         </th>
                         <th>
                             {{ trans('pqeAdmin::cruds.team.fields.name') }}
-                        </th>
-                        <th>
-                            &nbsp;
                         </th>
                     </tr>
                 </thead>
@@ -29,12 +29,6 @@
                         <tr data-entry-id="{{ $team->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $team->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $team->name ?? '' }}
                             </td>
                             <td>
                                 @can('team_access')
@@ -59,6 +53,12 @@
 
                             </td>
 
+                            <td>
+                                {{ $team->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $team->name ?? '' }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

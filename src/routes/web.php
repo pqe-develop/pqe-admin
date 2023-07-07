@@ -109,6 +109,10 @@ function () {
                 ]
             ]);
 
+    // Dropdown
+    Route::delete('dropdowns/destroy', 'DropdownsController@massDestroy')->name('dropdowns.massDestroy');
+    Route::resource('dropdowns', 'DropdownsController');
+    
     // Global Search
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });

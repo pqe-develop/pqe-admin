@@ -14,6 +14,9 @@
 
                         </th>
                         <th>
+                            &nbsp;
+                        </th>
+                        <th>
                             {{ trans('pqeAdmin::cruds.userAlert.fields.id') }}
                         </th>
                         <th>
@@ -28,9 +31,6 @@
                         <th>
                             {{ trans('pqeAdmin::cruds.userAlert.fields.created_at') }}
                         </th>
-                        <th>
-                            &nbsp;
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,23 +38,6 @@
                         <tr data-entry-id="{{ $userAlert->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $userAlert->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userAlert->alert_text ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userAlert->alert_link ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($userAlert->users as $key => $item)
-                                    <span class="badge badge-info">{{ $item->username }}</span>
-                                @endforeach
-                            </td>
-                            <td>
-                                {{ $userAlert->created_at ?? '' }}
                             </td>
                             <td>
                                 @can('user_alert_access')
@@ -74,6 +57,23 @@
 
                             </td>
 
+                            <td>
+                                {{ $userAlert->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userAlert->alert_text ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userAlert->alert_link ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($userAlert->users as $key => $item)
+                                    <span class="badge badge-info">{{ $item->username }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $userAlert->created_at ?? '' }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

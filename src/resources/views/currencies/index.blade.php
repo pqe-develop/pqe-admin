@@ -14,6 +14,9 @@
 
                         </th>
                         <th>
+                            &nbsp;
+                        </th>
+                        <th>
                             {{ trans('pqeAdmin::cruds.currency.fields.id') }}
                         </th>
                         <th>
@@ -34,9 +37,6 @@
                         <th>
                             {{ trans('pqeAdmin::cruds.currency.fields.decimal_digits') }}
                         </th>
-                        <th>
-                            &nbsp;
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,27 +44,6 @@
                         <tr data-entry-id="{{ $currency->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $currency->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currency->code ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currency->description ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currency->symbol ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currency->country->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currency->order_number ?? '' }}
-                            </td>
-                            <td>
-                                {{ $currency->decimal_digits ?? '' }}
                             </td>
                             <td>
                                 @can('currency_access')
@@ -89,6 +68,27 @@
 
                             </td>
 
+                            <td>
+                                {{ $currency->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $currency->code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $currency->description ?? '' }}
+                            </td>
+                            <td>
+                                {{ $currency->symbol ?? '' }}
+                            </td>
+                            <td>
+                                {{ $currency->country->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $currency->order_number ?? '' }}
+                            </td>
+                            <td>
+                                {{ $currency->decimal_digits ?? '' }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

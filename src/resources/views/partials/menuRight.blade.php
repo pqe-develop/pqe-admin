@@ -67,7 +67,7 @@
 								</p>
 							</a>
 							@endcan
-                            <a href="#" class="dropdown-item bg-dark"
+							<a href="#" class="dropdown-item bg-dark"
                                 onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                                 <p>
                                     <i class="fas fa-fw fa-sign-out-alt nav-icon"></i>{{ trans('pqeAdmin::global.logout') }}

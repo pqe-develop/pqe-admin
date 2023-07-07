@@ -261,4 +261,20 @@ return [
             'name_helper' => ''
         ]
     ],
+    'dropdowns' => [
+        'title' => 'Dropdowns',
+        'title_singular' => 'Dropdown',
+        'fields' => [
+            'dropdown' => 'Dropdown Name',
+            'dropdown_helper' => '',
+            'name' => 'Dropdown Key',
+            'name_helper' => '',
+            'label' => 'Label Name',
+            'label_helper' => '',
+            'group' => 'Group',
+            'group_helper' => '',
+            'disactivated' => 'Disactivated',
+            'disactivated_helper' => '',
+        ]
+    ],
 ];

@@ -14,6 +14,9 @@
 
                         </th>
                         <th>
+                            &nbsp;
+                        </th>
+                        <th>
                             {{ trans('pqeAdmin::cruds.role.fields.id') }}
                         </th>
                         <th>
@@ -22,9 +25,6 @@
                         <th>
                             {{ trans('pqeAdmin::cruds.role.fields.permissions') }}
                         </th>
-                        <th>
-                            &nbsp;
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,24 +32,6 @@
                         <tr data-entry-id="{{ $role->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $role->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $role->title ?? '' }}
-                            </td>
-                            <td>
-<?php
-                            $permissionsArray = array();
-                            foreach ($role->permissions as $key => $item) {
-                                $permissionsArray[] = $item->title;
-                            }
-                            sort($permissionsArray);
-?>
-                                @foreach($permissionsArray as $item)
-                                    <span class="badge badge-info">{{ $item }}</span>
-                                @endforeach
                             </td>
                             <td>
                                 @can('role_access')
@@ -74,6 +56,24 @@
 
                             </td>
 
+                            <td>
+                                {{ $role->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $role->title ?? '' }}
+                            </td>
+                            <td>
+<?php
+                            $permissionsArray = array();
+                            foreach ($role->permissions as $key => $item) {
+                                $permissionsArray[] = $item->title;
+                            }
+                            sort($permissionsArray);
+?>
+                                @foreach($permissionsArray as $item)
+                                    <span class="badge badge-info">{{ $item }}</span>
+                                @endforeach
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

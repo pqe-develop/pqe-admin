@@ -2,16 +2,44 @@
 
 namespace Pqe\Admin\Utils;
 
-use Pqe\Admin\Models\Dropdowns;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Exception;
 
-class DDUtil {
+class DDUtil extends Model {
+    protected $dropdowns;
+    protected $ddItems;
 
-    public static function getList($dropdownName, $group = null) {
+    public function __construct(Collection $dropdowns) {
+        $this->dropdowns = $dropdowns;
+        foreach ($dropdowns as $dropdown) {
+            $dd = $dropdown->dropdown;
+            $key = $dropdown->name;
+            $label = $dropdown->label;
+            $group = $dropdown->group;
         if (empty($group)) {
-            return Dropdowns::where('dropdown', $dropdownName)->whereNot('disactivated', '1')->pluck('name', 'label');
+                $this->ddItems[$dd][$key] = $label;
         } else {
-            return Dropdowns::where('dropdown', $dropdownName)->where('group', $group)->whereNot('disactivated', '1')->pluck(
-                    'name', 'label');
+                $this->ddItems[$dd][$group][$key] = $label;
+            }
+        }
+    }
+
+    public function get($dropdown) {
+        if (!isset($this->ddItems[$dropdown])) {
+            throw new Exception("Dropdown " . $dropdown . " not found");
+        } else {
+            return $this->ddItems[$dropdown];
+        }
+    }
+
+    public function getItem($dropdown, $name) {
+        if (!isset($this->ddItems[$dropdown])) {
+            throw new Exception("Dropdown " . $dropdown . " or key " . $name . " not found");
+        } else if (!isset($this->ddItems[$dropdown][$name])) {
+            return null;
+        } else {
+            return $this->ddItems[$dropdown][$name];
         }
     }
 }

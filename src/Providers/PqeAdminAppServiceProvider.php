@@ -12,9 +12,12 @@ use Pqe\Admin\Middleware\CheckForMaintenanceMode;
 use Pqe\Admin\Middleware\ExtendSession;
 use Pqe\Admin\Middleware\LogRouteMiddleware;
 use Pqe\Admin\Middleware\SetLocale;
+use Pqe\Admin\Utils\DDUtil;
 use Pqe\Admin\Utils\MySqlGrammar;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Database\Eloquent\Builder;
+use Pqe\Admin\Models\Dropdowns;
 
 
 class PqeAdminAppServiceProvider extends ServiceProvider {
@@ -41,6 +44,9 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
      */
     public function register() {
         //
+        $this->app->singleton('Pqe\Admin\Utils\DDUtil', function ($app) {
+            return new DDUtil(Dropdowns::all());
+        });
     }
 
     /**
@@ -48,7 +54,7 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot(Kernel $kernel) {
+    public function boot(Kernel $kernel, DDUtil $dropdowns) {
         // Load from package routes/views/middleware
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'pqeAdmin');
@@ -80,12 +86,6 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
         }
         
         /*
-         * Error: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes
-         * Do we need this change ???? 
-         */
-//         Schema::defaultStringLength(191);
-
-        /*
          * MySqlGrammar extension as indicated in https://carbon.nesbot.com/laravel/
          */
         DB::connection()->setQueryGrammar(new MySqlGrammar);
@@ -94,19 +94,14 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
             return $string ? $this->where($field, 'like', '%' . $string. '%') : $this;
         });
             
+        /*
+         * Load dropdown data & master tables
+         * 
+         */
+        View::share('dropdowns', $dropdowns);
+//         DDUtil::loadDropdowns();
+        
     }
 
-//     protected function registerRoutes() {
-//         Route::group($this->routeConfiguration(), function () {
-//             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-//         });
-//     }
-
-//     protected function routeConfiguration() {
-//         return [
-//             'prefix' => '',
-//             'middleware' => ['auth'],
-//         ];
-//     }
 }
 

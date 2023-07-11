@@ -29,10 +29,13 @@ class DDUtil extends Model {
         }
     }
 
-    public function get($dropdown) {
+    public function get($dropdown, $flagEmpty = true) {
         if (!isset($this->ddItems[$dropdown])) {
             throw new Exception("Dropdown " . $dropdown . " not found");
         } else {
+            if ($flagEmpty) {
+                unset($this->ddItems[$dropdown]['']);
+            }
             return $this->ddItems[$dropdown];
         }
     }

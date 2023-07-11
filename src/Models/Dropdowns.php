@@ -14,7 +14,7 @@ class Dropdowns extends Model {
         'dropdown',
         'name',
         'label',
-        'group',
+        'dd_filter',
         'disactivated',
     ];
 }

@@ -45,7 +45,7 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
     public function register() {
         //
         $this->app->singleton('Pqe\Admin\Utils\DDUtil', function ($app) {
-            return new DDUtil(Dropdowns::all());
+            return new DDUtil(Dropdowns::orderBy('label')->get());
         });
     }
 

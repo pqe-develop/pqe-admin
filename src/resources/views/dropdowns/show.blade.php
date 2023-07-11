@@ -33,8 +33,8 @@
             			<input class="form-control" readonly="readonly" type="text" value="{{ $dropdown->label ?? '' }}">
         		     </div>
         		    <div class="form-group col-6">
-            			<label> {{ trans('pqeAdmin::cruds.dropdowns.fields.group') }}</label>
-            			<input class="form-control" readonly="readonly" type="text" value="{{ $dropdown->group ?? '' }}">
+            			<label> {{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter') }}</label>
+            			<input class="form-control" readonly="readonly" type="text" value="{{ $dropdown->dd_filter ?? '' }}">
         		     </div>
                      <div class="form-group col-6">
                       <div class="form-check {{ $errors->has('disactivated') ? 'is-invalid' : '' }}">

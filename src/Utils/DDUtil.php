@@ -16,11 +16,15 @@ class DDUtil extends Model {
             $dd = $dropdown->dropdown;
             $key = $dropdown->name;
             $label = $dropdown->label;
-            $group = $dropdown->group;
-        if (empty($group)) {
+            $dd_filter = $dropdown->dd_filter;
+            // add blanks
+            if (!isset($this->ddItems[$dd][''])) {
+                $this->ddItems[$dd][''] = '';
+            }
+            if (empty($dd_filter)) {
                 $this->ddItems[$dd][$key] = $label;
         } else {
-                $this->ddItems[$dd][$group][$key] = $label;
+                $this->ddItems[$dd][$dd_filter . "|" . $key] = $label;
             }
         }
     }
@@ -33,13 +37,17 @@ class DDUtil extends Model {
         }
     }
 
-    public function getItem($dropdown, $name) {
+    public function getItem($dropdown, $name, $dd_filter = null) {
         if (!isset($this->ddItems[$dropdown])) {
             throw new Exception("Dropdown " . $dropdown . " or key " . $name . " not found");
         } else if (!isset($this->ddItems[$dropdown][$name])) {
             return null;
         } else {
+            if (!empty($dd_filter)) {
+                return $this->ddItems[$dropdown][$dd_filter . "|" . $name];
+            } else {
             return $this->ddItems[$dropdown][$name];
+            }
         }
     }
 }

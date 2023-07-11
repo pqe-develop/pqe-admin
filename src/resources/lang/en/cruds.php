@@ -271,8 +271,8 @@ return [
             'name_helper' => '',
             'label' => 'Label Name',
             'label_helper' => '',
-            'group' => 'Group',
-            'group_helper' => '',
+            'dd_filter' => 'Filter',
+            'dd_filter_helper' => '',
             'disactivated' => 'Disactivated',
             'disactivated_helper' => '',
         ]

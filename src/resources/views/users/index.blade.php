@@ -71,7 +71,7 @@
                                 {{ $user->name ?? '' }}
                             </td>
                             <td>
-                                {{ Pqe\Admin\Utils\Dropdowns::STATUS_SELECT[$user->status] ?? '' }}
+                                {{ $dropdowns->getItem('STATUS_SELECT',$user->status) ?? '' }}
                             </td>
                             <td>
                                 {{ $user->email ?? '' }}

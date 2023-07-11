@@ -25,7 +25,7 @@
                             {{ trans('pqeAdmin::cruds.dropdowns.fields.label') }}
                         </th>
                         <th>
-                            {{ trans('pqeAdmin::cruds.dropdowns.fields.group') }}
+                            {{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter') }}
                         </th>
                         <th>
                             {{ trans('pqeAdmin::cruds.dropdowns.fields.disactivated') }}
@@ -70,7 +70,7 @@
                                 {{ $dropdown->label ?? '' }}
                             </td>
                             <td>
-                                {{ $dropdown->group ?? '' }}
+                                {{ $dropdown->dd_filter ?? '' }}
                             </td>
                             <td>
                                 {{ $dropdown->disactivated ?? '' }}

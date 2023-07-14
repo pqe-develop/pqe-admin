@@ -4,7 +4,7 @@ namespace Pqe\Admin\Controllers;
 
 use Pqe\Admin\Models\AuditLog;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 

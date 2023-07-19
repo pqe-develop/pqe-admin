@@ -1,4 +1,4 @@
-@extends('layouts.menu')
+@extends('layouts.admin')
 @section('content')
 
 <div class="card">
@@ -34,8 +34,8 @@
                 <span class="help-block">{{ trans('pqeAdmin::cruds.dropdowns.fields.label_helper') }}</span>
             </div>
             <div class="form-group col-6">
-                <label class="required" for="label">{{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter') }}</label>
-                <input class="form-control {{ $errors->has('dd_filter') ? 'is-invalid' : '' }}" type="text" name="dd_filter" id="dd_filter" value="{{ old('dd_filter', '') }}" required>
+                <label for="label">{{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter') }}</label>
+                <input class="form-control {{ $errors->has('dd_filter') ? 'is-invalid' : '' }}" type="text" name="dd_filter" id="dd_filter" value="{{ old('dd_filter', '') }}">
                 @if($errors->has('dd_filter'))
                     <span class="text-danger">{{ $errors->first('dd_filter') }}</span>
                 @endif

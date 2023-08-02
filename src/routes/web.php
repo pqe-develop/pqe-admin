@@ -112,6 +112,7 @@ function () {
     // Dropdown
     Route::delete('dropdowns/destroy', 'DropdownsController@massDestroy')->name('dropdowns.massDestroy');
     Route::resource('dropdowns', 'DropdownsController');
+    Route::get('dependent-dropdown', 'DropdownsController@getDropdownValues')->name('dependent-dropdown');
     
     // Global Search
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');

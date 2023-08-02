@@ -8,6 +8,7 @@ use Pqe\Admin\Requests\StoreDropdownsRequest;
 use Pqe\Admin\Requests\UpdateDropdownsRequest;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 
 class DropdownsController extends Controller {
     
@@ -61,5 +62,19 @@ class DropdownsController extends Controller {
         Dropdowns::whereIn('id', request('ids'))->delete();
         
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function getDropdownValues(Request $request)
+    {
+        $dropdown = $request->input('dropdown');
+        $filterValue = $request->input('filter');
+
+        // Query the database for the dependent values based on the Filter (key)
+        $dependentValues = Dropdowns::where('dd_filter', $filterValue)->where('dropdown', $dropdown)
+            ->pluck('label', 'name')
+            ->toArray();
+
+        // Return the dependent values as JSON response
+        return response()->json($dependentValues);
     }
 }

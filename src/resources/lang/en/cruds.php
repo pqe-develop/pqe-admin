@@ -275,6 +275,8 @@ return [
             'dd_filter_helper' => '',
             'disactivated' => 'Disactivated',
             'disactivated_helper' => '',
+            'prog' => 'Order number',
+            'prog_helper' => '',
         ]
     ],
 ];

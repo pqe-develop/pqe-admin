@@ -16,5 +16,6 @@ class Dropdowns extends Model {
         'label',
         'dd_filter',
         'disactivated',
+        'prog',
     ];
 }

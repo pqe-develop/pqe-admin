@@ -28,6 +28,9 @@
                             {{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter') }}
                         </th>
                         <th>
+                            {{ trans('pqeAdmin::cruds.dropdowns.fields.prog') }}
+                        </th>
+                        <th>
                             {{ trans('pqeAdmin::cruds.dropdowns.fields.disactivated') }}
                         </th>
                     </tr>
@@ -73,7 +76,10 @@
                                 {{ $dropdown->dd_filter ?? '' }}
                             </td>
                             <td>
-                                {{ $dropdown->disactivated ?? '' }}
+                                {{ $dropdown->prog ?? '' }}
+                            </td>
+                            <td>
+                                {{ $dropdown->disactivated ? 'Yes' : 'No' }}
                             </td>
                         </tr>
                     @endforeach

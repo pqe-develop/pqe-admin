@@ -43,9 +43,17 @@
                 <span class="help-block">{{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter_helper') }}</span>
             </div>
             <div class="form-group col-6">
+                <label for="label">{{ trans('pqeAdmin::cruds.dropdowns.fields.prog') }}</label>
+                <input class="form-control {{ $errors->has('prog') ? 'is-invalid' : '' }}" progt" name="prog" id="prog" value="{{ old('prog', $dropdown->prog) }}">
+                @if($errors->has('prog'))
+                    <span class="text-danger">{{ $errors->first('prog') }}</span>
+                @endif
+                <span class="help-block">{{ trans('pqeAdmin::cruds.dropdowns.fields.prog_helper') }}</span>
+            </div>
+            <div class="form-group col-6">
               <div class="form-check {{ $errors->has('disactivated') ? 'is-invalid' : '' }}">
                 <input type="hidden" name="disactivated" value="0">
-                <input class="form-check-input" type="checkbox" 
+                <input class="pqe-checkbox" type="checkbox" 
                 name="disactivated" id="disactivated" onclick="handledisactivatedClick(this);"  value="1" {{ $dropdown->disactivated || old('disactivated', 0) === 1 ? 'checked' : '' }} >
                 <label for="disactivated">{{ trans('pqeAdmin::cruds.dropdowns.fields.disactivated') }}</label>
               </div>

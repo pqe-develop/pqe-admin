@@ -36,10 +36,14 @@
             			<label> {{ trans('pqeAdmin::cruds.dropdowns.fields.dd_filter') }}</label>
             			<input class="form-control" readonly="readonly" type="text" value="{{ $dropdown->dd_filter ?? '' }}">
         		     </div>
+        		    <div class="form-group col-6">
+            			<label> {{ trans('pqeAdmin::cruds.dropdowns.fields.prog') }}</label>
+            			<input class="form-control" readonly="readonly" type="text" value="{{ $dropdown->prog ?? '' }}">
+        		     </div>
                      <div class="form-group col-6">
                       <div class="form-check {{ $errors->has('disactivated') ? 'is-invalid' : '' }}">
                         <input type="hidden" name="disactivated" value="0">
-                        <input class="form-check-input" type="checkbox"  disabled="disabled" value="{{ $dropdown->disactivated ? 'checked' : '' }}"> 
+                        <input class="pqe-checkbox" type="checkbox"  disabled="disabled" value="{{ $dropdown->disactivated ? 'checked' : '' }}"> 
                         <label for="disactivated">{{ trans('pqeAdmin::cruds.dropdowns.fields.disactivated') }}</label>
                       </div> 
                     </div>

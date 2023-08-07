@@ -9,11 +9,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                @if ((strpos(url()->previous(), 'create') === false) && (strpos(url()->previous(), 'duplicate') === false))
-                <a class="btn btn-default" onClick="history.go(-1);return true;">
-                    {{ trans('pqeAdmin::global.back') }}
-                </a>
-                @endif
+    			@include('pqeAdmin::partials.back')
                 <a class="btn btn-warning" href="{{ route('dropdowns.index') }}">
                     {{ trans('pqeAdmin::global.back_to_list') }}
                 </a>
@@ -50,11 +46,7 @@
           		</div>
     	    </div>
             <div class="form-group">
-                @if ((strpos(url()->previous(), 'create') === false) && (strpos(url()->previous(), 'duplicate') === false))
-                <a class="btn btn-default" onClick="history.go(-1);return true;">
-                    {{ trans('pqeAdmin::global.back') }}
-                </a>
-                @endif
+    			@include('pqeAdmin::partials.back')
                 <a class="btn btn-warning" href="{{ route('dropdowns.index') }}">
                     {{ trans('pqeAdmin::global.back_to_list') }}
                 </a>

@@ -24,7 +24,9 @@ class DDUtil extends Model {
             if (empty($dd_filter)) {
                 $this->ddItems[$dd][$key] = $label;
         } else {
-                $this->ddItems[$dd][$dd_filter . "|" . $key] = $label;
+                //changes by TIA - Purpose - dependent dropdown logic did not need the concated dropdown value
+                //$this->ddItems[$dd][$dd_filter . "|" . $key] = $label;
+                $this->ddItems[$dd][$key] = $label;
             }
         }
     }

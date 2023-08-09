@@ -35,7 +35,7 @@ trait Auditable {
                     'code' => $code ?? null,
                     'description' => $description,
                     'subject_id' => $model->id ?? null,
-                    'subject_type' => get_class($model) ?? null,
+                    'subject_type' => $model->getTable() ?? null,
                     'user_name' => auth()->user()->username ?? null,
                     'user_id' => auth()->id() ?? null,
                     'properties' => $model ?? null,

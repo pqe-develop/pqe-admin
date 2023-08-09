@@ -15,19 +15,27 @@ class AuditLogsController extends Controller {
 
         if ($request->ajax()) {
             $query = AuditLog::query()->select(sprintf('%s.*', (new AuditLog())->table));
+
+            // only modules enabled
+            $abilityQuery = $this->getTableFromPermission();
+
+            $query = $query->whereIn('subject_type', $abilityQuery);
+
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
-            $table->editColumn('actions', function ($row) {
+            $table->editColumn('actions',
+                    function ($row) {
                 $viewGate = 'audit_log_access';
-                $editGate = 'audit_log_edit';
-                $deleteGate = 'audit_log_edit';
+                        $editGate = '';
+                        $deleteGate = '';
                 $duplicateGate = '';
                 $crudRoutePart = 'audit-logs';
 
-                return view('pqeAdmin::partials.datatablesActions', compact('viewGate', 'editGate', 'deleteGate', 'duplicateGate', 'crudRoutePart', 'row'));
+                return view('pqeAdmin::partials.datatablesActions',
+                                compact('viewGate', 'editGate', 'deleteGate', 'duplicateGate', 'crudRoutePart', 'row'));
             });
 
             $table->editColumn('code', function ($row) {
@@ -57,7 +65,8 @@ class AuditLogsController extends Controller {
 
             $table->rawColumns([
                 'actions',
-                'placeholder']);
+                'placeholder'
+            ]);
 
             return $table->make(true);
         }
@@ -70,4 +79,58 @@ class AuditLogsController extends Controller {
 
         return view('pqeAdmin::auditLogs.show', compact('auditLog'));
     }
+
+    private function getTableFromPermission() {
+        $table = array(
+            'audit_log' => 'audit_logs',
+            'benefit' => 'benefits',
+            'benefit_type' => 'benefit_type',
+            'companies_bank_holiday' => 'companies_bank_holidays',
+            'company' => 'companies',
+            'contract' => 'contracts',
+            'country' => 'countries',
+            'course' => 'hse_courses',
+            'currency' => 'currencies',
+            'currency_history' => 'currency_histories',
+            'dpi_assign' => 'hse_dpi_assig',
+            'dropdown' => 'dropdowns',
+            'education' => 'education',
+            'grading' => 'grading',
+            'highest_degree' => 'highest_degree',
+            'job_experience' => 'job_experiences',
+            'job_grade' => 'job_grades',
+            'language' => 'languages',
+            'medical_check' => 'hse_medical_check',
+            'partner' => 'partners',
+            'partner_level' => 'partner_levels',
+            'permission' => 'permissions',
+            'presentation' => 'presentations',
+            'professionals_ass' => 'professionals_ass',
+            'publications' => 'publications',
+            'resource' => 'resources',
+            'role' => 'roles',
+            'salary' => 'salaries',
+            'team' => 'teams',
+            'training' => 'trainings',
+            'unilav' => 'hse_unilav',
+            'user' => 'users',
+        );
+        $abilityQuery = array();
+        $abilities = Gate::abilities();
+        foreach ($abilities as $ability => $params) {
+            $params = $params;
+            $pos = strpos($ability, '_access');
+            if ($pos !== false) {
+                $perm = str_replace('_access', '', $ability);
+                if (isset($table[$perm])) {
+                    array_push($abilityQuery, $table[$perm]);
 }
+                if ($perm == 'contract') {
+                    array_push($abilityQuery, 'contract_details');
+}
+            }
+        }
+        return $abilityQuery;
+    }
+}
+

@@ -73,6 +73,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('pqeAdmin::cruds.auditLog.fields.updated_data') }}
+                        </th>
+                        <td>
+                            {{ $auditLog->updated_data }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('pqeAdmin::cruds.auditLog.fields.host') }}
                         </th>
                         <td>

@@ -14,7 +14,7 @@ class TeamsController extends Controller {
     public function index() {
         abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $teams = Team::all();
+        $teams = Team::all()->sortBy('name');
 
         return view('pqeAdmin::teams.index', compact('teams'));
     }

@@ -11,7 +11,7 @@ class CompaniesController extends Controller {
     public function index() {
         abort_if(Gate::denies('company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $companies = Company::all();
+        $companies = Company::all()->sortBy('order_number');
 
         return view('pqeAdmin::companies.index', compact('companies'));
     }

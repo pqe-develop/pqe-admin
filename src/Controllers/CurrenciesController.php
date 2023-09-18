@@ -11,7 +11,10 @@ class CurrenciesController extends Controller {
     public function index() {
         abort_if(Gate::denies('currency_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $currencies = Currency::all()->sortBy('code');
+        $currencies = Currency::all()->sortBy([
+            'order_number',
+            'full_code'
+        ]);
 
         return view('pqeAdmin::currencies.index', compact('currencies'));
     }

@@ -131,7 +131,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 2, 'asc' ]],
+    order: [[ 3, 'asc' ]],
 	pageLength: {{ trans('pqeAdmin::config.pgLen') }},
 	lengthMenu: [[ {{ trans('pqeAdmin::config.lenMenu') }} ], [ {{ trans('pqeAdmin::config.desMenu') }}, "All" ]]
   });

@@ -15,7 +15,7 @@ class RolesController extends Controller {
     public function index() {
         abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::all();
+        $roles = Role::all()->sortBy('title');
 
         return view('pqeAdmin::roles.index', compact('roles'));
     }
@@ -23,7 +23,7 @@ class RolesController extends Controller {
     public function create() {
         abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permissions = Permission::all()->pluck('title', 'id');
+        $permissions = Permission::all()->sortBy('title')->pluck('title', 'id');
 
         return view('pqeAdmin::roles.create', compact('permissions'));
     }
@@ -38,7 +38,7 @@ class RolesController extends Controller {
     public function edit(Role $role) {
         abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permissions = Permission::all()->pluck('title', 'id');
+        $permissions = Permission::all()->sortBy('title')->pluck('title', 'id');
 
         $role->load('permissions');
 

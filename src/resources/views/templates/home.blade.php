@@ -100,7 +100,7 @@
         <a href="{{ url('/admin')}}" target="_blank">
           <img src="{{ url('/images/icona Admin.png') }}" border="0" style="width: 20%" />
         </a>
-          <p style="font-size: 30px;">PQE Admin Home Page</p>
+          <p style="font-size: 30px;">{{ trans('panel.home_title') }}</p>
       </div>
     </div>
 

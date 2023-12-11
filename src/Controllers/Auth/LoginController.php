@@ -3,7 +3,6 @@
 namespace Pqe\Admin\Controllers\Auth;
 
 use Pqe\Admin\Controllers\Controller;
-use Adldap\Laravel\Facades\Adldap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
@@ -98,7 +97,8 @@ class LoginController extends Controller {
                 return true;
             } else {
                 // Input users credentials are not matched with the admin records present in users table
-                if (Auth::guard('users')->attempt([
+                if (Auth::guard('users')->attempt(
+                        [
                     'username' => $request->username,
                     'password' => $request->password
                 ], $request->remember)) {
@@ -112,7 +112,12 @@ class LoginController extends Controller {
         } else {
             // LDAP auth
             // if (Adldap::auth()->attempt($username, $password, $bindAsUser = true)) {
-            if (Adldap::auth()->attempt($username, $password, true)) {
+            // if (Adldap::auth()->attempt($username, $password, true)) {
+            $credentialsLdap = array(
+                'samaccountname' => $username,
+                'password' => $password,
+            );
+            if (Auth::attempt($credentialsLdap)) {
                 $this->guard()->login($user, true);
                 return true;
             } else {
@@ -126,60 +131,60 @@ class LoginController extends Controller {
         return false;
     }
 
-    protected function retrieveSyncAttributes($username) {
-        $ldapuser = Adldap::search()->findBy('samaccountname', $username); // userprincipalname or samaccountname
-        if (!$ldapuser) {
-            // log error
-            return false;
-        }
-        // if you want to see the list of available attributes in your specific LDAP server:
-        // var_dump($ldapuser->attributes); exit;
-        // needed if any attribute is not directly accessible via a method call.
-        // attributes in \Adldap\Models\User are protected, so we will need
-        // to retrieve them using reflection.
-        $ldapuser_attrs = null;
+//     protected function retrieveSyncAttributes($username) {
+//         $ldapuser = Adldap::search()->findBy('samaccountname', $username); // userprincipalname or samaccountname
+//         if (!$ldapuser) {
+//             // log error
+//             return false;
+//         }
+//         // if you want to see the list of available attributes in your specific LDAP server:
+//         // var_dump($ldapuser->attributes); exit;
+//         // needed if any attribute is not directly accessible via a method call.
+//         // attributes in \Adldap\Models\User are protected, so we will need
+//         // to retrieve them using reflection.
+//         $ldapuser_attrs = null;
 
-        $attrs = [];
+//         $attrs = [];
 
-        foreach (config('ldap_auth.sync_attributes') as $local_attr => $ldap_attr) {
-            if ($local_attr == 'username') {
-                continue;
-            }
+//         foreach (config('ldap_auth.sync_attributes') as $local_attr => $ldap_attr) {
+//             if ($local_attr == 'username') {
+//                 continue;
+//             }
 
-            $method = 'get' . $ldap_attr;
-            if (method_exists($ldapuser, $method)) {
-                $attrs[$local_attr] = $ldapuser->$method();
-                continue;
-            }
+//             $method = 'get' . $ldap_attr;
+//             if (method_exists($ldapuser, $method)) {
+//                 $attrs[$local_attr] = $ldapuser->$method();
+//                 continue;
+//             }
 
-            if ($ldapuser_attrs === null) {
-                $ldapuser_attrs = self::accessProtected($ldapuser, 'attributes');
-            }
+//             if ($ldapuser_attrs === null) {
+//                 $ldapuser_attrs = self::accessProtected($ldapuser, 'attributes');
+//             }
 
-            if (!isset($ldapuser_attrs[$ldap_attr])) {
-                // an exception could be thrown
-                $attrs[$local_attr] = null;
-                continue;
-            }
+//             if (!isset($ldapuser_attrs[$ldap_attr])) {
+//                 // an exception could be thrown
+//                 $attrs[$local_attr] = null;
+//                 continue;
+//             }
 
-            if (!is_array($ldapuser_attrs[$ldap_attr])) {
-                $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr];
-            }
+//             if (!is_array($ldapuser_attrs[$ldap_attr])) {
+//                 $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr];
+//             }
 
-            if (count($ldapuser_attrs[$ldap_attr]) == 0) {
-                // an exception could be thrown
-                $attrs[$local_attr] = null;
-                continue;
-            }
+//             if (count($ldapuser_attrs[$ldap_attr]) == 0) {
+//                 // an exception could be thrown
+//                 $attrs[$local_attr] = null;
+//                 continue;
+//             }
 
-            // now it returns the first item, but it could return
-            // a comma-separated string or any other thing that suits you better
-            $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr][0];
-            // $attrs[ $local_attr] = implode(',', $ldapuser_attrs[$ldap_attr]);
-        }
+//             // now it returns the first item, but it could return
+//             // a comma-separated string or any other thing that suits you better
+//             $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr][0];
+//             // $attrs[ $local_attr] = implode(',', $ldapuser_attrs[$ldap_attr]);
+//         }
 
-        return $attrs;
-    }
+//         return $attrs;
+//     }
 
     protected static function accessProtected($obj, $prop) {
         $reflection = new \ReflectionClass($obj);

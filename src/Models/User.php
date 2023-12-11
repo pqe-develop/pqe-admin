@@ -8,10 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
+use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use DateTimeInterface;
 
-class User extends Authenticatable {
-    use Notifiable, HasApiTokens;
+class User extends Authenticatable implements LdapAuthenticatable {
+    use Notifiable, HasApiTokens, AuthenticatesWithLdap;
     public $table = 'users';
     protected $hidden = [
         'remember_token',
@@ -32,6 +34,8 @@ class User extends Authenticatable {
         'email_verified_at',
         'password',
         'remember_token',
+        'guid',
+        'domain',
         'created_at',
         'updated_at',
     ];

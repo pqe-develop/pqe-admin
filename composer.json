@@ -6,17 +6,18 @@
 	"require" : {
 		"maatwebsite/excel" : "^3.1",
 		"yajra/laravel-datatables-oracle" : "^10.11",
-		"adldap2/adldap2-laravel" : "^6.1",
 		"laravel/ui" : "^4.2.2",
 		"laravel/passport" : "^11.10",
-        "spatie/laravel-ignition": "^2.3"
+		"spatie/laravel-ignition" : "^2.3",
+		"directorytree/ldaprecord-laravel": "^3.1"
 	},
 	"require-dev" : {
 		"laravel/dusk" : "^7.11",
 		"mockery/mockery" : "^1.6",
 		"kitloong/laravel-migrations-generator" : "^6.11",
 		"nunomaduro/collision" : "^7.0",
-		"phpunit/phpunit" : "^10.0"
+		"phpunit/phpunit" : "^10.0",
+		"reliese/laravel": "^1.2"
 	},
 	"autoload" : {
 		"psr-4" : {

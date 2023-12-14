@@ -5,10 +5,10 @@ namespace Pqe\Admin\Controllers\Auth;
 use Pqe\Admin\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Inertia\Inertia;
 use Pqe\Admin\Models\AuditLog;
+use Pqe\Admin\Providers\PqeAdminAppServiceProvider;
 use Pqe\Admin\Requests\Auth\LoginRequest;
 
 class LoginController extends Controller {
@@ -31,7 +31,7 @@ class LoginController extends Controller {
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+//     protected $redirectTo = PqeAdminAppServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -50,8 +50,7 @@ class LoginController extends Controller {
     /**
      * Show the login form.
      */
-    public function showLoginFormInertia()
-    {
+    public function showLoginFormInertia() {
         return Inertia::render('Auth/Login');
     }
     
@@ -66,15 +65,13 @@ class LoginController extends Controller {
         ]);
     }
 
-    public function login(LoginRequest $request)
-    {
+    public function login(LoginRequest $request) {
         $this->validateLogin($request);
         
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-                $this->hasTooManyLoginAttempts($request)) {
+        if (method_exists($this, 'hasTooManyLoginAttempts') && $this->hasTooManyLoginAttempts($request)) {
                     $this->fireLockoutEvent($request);
                     
                     return $this->sendLockoutResponse($request);
@@ -159,7 +156,11 @@ class LoginController extends Controller {
             
             $request->session()->regenerate();
             
-            return redirect()->intended(RouteServiceProvider::HOME);
+            if (env('APP_INERTIA')) {
+                return redirect()->intended(PqeAdminAppServiceProvider::HOME);
+            } else {
+                return redirect()->intended(PqeAdminAppServiceProvider::HOMEBLADE);
+            }
             
 //             $credentialsLdap = array(
 //                 'samaccountname' => $username,
@@ -234,10 +235,10 @@ class LoginController extends Controller {
 //         return $attrs;
 //     }
 
-    protected static function accessProtected($obj, $prop) {
-        $reflection = new \ReflectionClass($obj);
-        $property = $reflection->getProperty($prop);
-        $property->setAccessible(true);
-        return $property->getValue($obj);
-    }
+    // protected static function accessProtected($obj, $prop) {
+    // $reflection = new ReflectionClass($obj);
+    // $property = $reflection->getProperty($prop);
+    // $property->setAccessible(true);
+    // return $property->getValue($obj);
+    // }
 }

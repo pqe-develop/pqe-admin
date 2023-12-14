@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Inertia\Inertia;
 use Pqe\Admin\Models\AuditLog;
+use Pqe\Admin\Requests\Auth\LoginRequest;
 
 class LoginController extends Controller {
     /*
@@ -45,6 +47,14 @@ class LoginController extends Controller {
         return view('pqeAdmin::auth.login');
     }
 
+    /**
+     * Show the login form.
+     */
+    public function showLoginFormInertia()
+    {
+        return Inertia::render('Auth/Login');
+    }
+    
     public function username() {
         return 'username';
     }
@@ -56,11 +66,41 @@ class LoginController extends Controller {
         ]);
     }
 
-    protected function attemptLogin(Request $request) {
+    public function login(LoginRequest $request)
+    {
+        $this->validateLogin($request);
+        
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        if (method_exists($this, 'hasTooManyLoginAttempts') &&
+                $this->hasTooManyLoginAttempts($request)) {
+                    $this->fireLockoutEvent($request);
+                    
+                    return $this->sendLockoutResponse($request);
+                }
+                
+                if ($this->attemptLogin($request)) {
+                    if ($request->hasSession()) {
+                        $request->session()->put('auth.password_confirmed_at', time());
+                    }
+                    
+                    return $this->sendLoginResponse($request);
+                }
+                
+                // If the login attempt was unsuccessful we will increment the number of attempts
+                // to login and redirect the user back to the login form. Of course, when this
+                // user surpasses their maximum number of attempts they will get locked out.
+                $this->incrementLoginAttempts($request);
+                
+                return $this->sendFailedLoginResponse($request);
+    }
+    
+    protected function attemptLogin(LoginRequest $request) {
         $credentials = $request->only($this->username(), 'password');
 
         $username = $credentials[$this->username()];
-        $password = $credentials['password'];
+//         $password = $credentials['password'];
         // TODO
         // gestire isadmin dell'utente ....
 
@@ -113,17 +153,25 @@ class LoginController extends Controller {
             // LDAP auth
             // if (Adldap::auth()->attempt($username, $password, $bindAsUser = true)) {
             // if (Adldap::auth()->attempt($username, $password, true)) {
-            $credentialsLdap = array(
-                'samaccountname' => $username,
-                'password' => $password,
-            );
-            if (Auth::attempt($credentialsLdap)) {
-                $this->guard()->login($user, true);
-                return true;
-            } else {
-                // Input users credentials are not matched with the admin records present in users table
-                return false;
-            }
+//             $loginRequest = new LoginRequest();
+//             $loginRequest = $request;
+            $request->authenticate();
+            
+            $request->session()->regenerate();
+            
+            return redirect()->intended(RouteServiceProvider::HOME);
+            
+//             $credentialsLdap = array(
+//                 'samaccountname' => $username,
+//                 'password' => $password,
+//             );
+//             if (Auth::attempt($credentialsLdap)) {
+//                 $this->guard()->login($user, true);
+//                 return true;
+//             } else {
+//                 // Input users credentials are not matched with the admin records present in users table
+//                 return false;
+//             }
         }
 
         // the user doesn't exist in the LDAP server or the password is wrong

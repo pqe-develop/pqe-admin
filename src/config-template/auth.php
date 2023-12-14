@@ -14,7 +14,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users'
+        'passwords' => 'users',
     ],
 
     /*
@@ -37,7 +37,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users'
+            'provider' => 'users',
         ],
 
         'api' => [
@@ -47,11 +47,11 @@ return [
         // For the HRMS administrator By Vivek Gaidhane on July 17 2020
         'admin' => [
             'driver' => 'session',
-            'provider' => 'ldap'
+            'provider' => 'ldap',
         ],
         'users' => [
             'driver' => 'session',
-            'provider' => 'users'
+            'provider' => 'users',
         ]
     ],
 
@@ -73,16 +73,6 @@ return [
     */
 
     'providers' => [
-        // 'ldap' => [
-        // 'driver' => 'ldap', //Replaced 'eloquent'with'ldap'
-        // 'model' => Pqe\Admin\Models\User::class,
-        // ],
-
-        // 'users' => [
-        // 'driver' => 'eloquent',
-        // 'model' => Pqe\Admin\Models\User::class,
-        // ],
-
         'users' => [
             'driver' => 'ldap',
             'model' => LdapRecord\Models\ActiveDirectory\User::class,
@@ -90,17 +80,17 @@ return [
             'scopes' => [],
             'database' => [
                 'model' => Pqe\Admin\Models\User::class,
-                'sync_passwords' => true,
+                'sync_passwords' => false,
                 'sync_attributes' => [
                     'name' => 'cn',
-                    'email' => 'mail',
+                    'username' => 'samaccountname',
+                ],
+                'sync_existing' => [
+                    'username' => 'samaccountname',
+                    'name' => 'cn',
                 ],
             ],
         ],
-        // 'users' => [
-        // 'driver' => 'database',
-        // 'table' => 'users',
-        // ],
     ],
 
     /*
@@ -115,6 +105,10 @@ return [
     | The expire time is the number of minutes that each reset token will be
     | considered valid. This security feature keeps tokens short-lived so
     | they have less time to be guessed. You may change this as needed.
+    |
+    | The throttle setting is the number of seconds a user must wait before
+    | generating more password reset tokens. This prevents the user from
+    | quickly generating a very large amount of password reset tokens.
     |
     */
 

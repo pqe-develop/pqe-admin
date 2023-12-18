@@ -1,0 +1,16 @@
+use hrtm;
+insert into team_user values(5495,2);
+insert into team_user values(7169,2);
+insert into team_user values(2313,5);
+insert into team_user values(2306,6);
+insert into team_user values(2307,6);
+insert into team_user values(2301,7);
+insert into team_user values(2303,7);
+insert into team_user values(2309,9);
+insert into team_user values(2312,10);
+insert into team_user values(2310,11);
+insert into team_user values(2272,14);
+insert into team_user values(2276,14);
+insert into team_user values(2237,15);
+insert into team_user values(2268,16);
+insert into team_user values(2316,22);

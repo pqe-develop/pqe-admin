@@ -281,4 +281,15 @@ return [
             'prog_helper' => '',
         ]
     ],
+
+    'internal_trainings' => [
+        'title' => 'Internal Training',
+        'title_singular' => 'Internal Training',
+        'fields' => [
+            'training_name' => 'Training Name',
+            'training_name_helper' => '',
+            'training_duration' => 'Training Duration',
+            'training_duration_helper' => '',
+        ]
+    ],
 ];

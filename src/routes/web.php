@@ -31,7 +31,7 @@ function () {
     
     // Users
     Route::get('/admin', 'UsersController@indexShow')->name('users.index');
-    Route::post('users', 'UsersController@store')->name('users.store');
+    //Route::post('users', 'UsersController@store')->name('users.store');
     Route::get('users/{user}', 'UsersController@show')->name('users.show');
     Route::put('users/{user}', 'UsersController@update')->name('users.update');
     Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit');

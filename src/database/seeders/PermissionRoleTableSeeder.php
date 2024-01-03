@@ -41,10 +41,6 @@ class PermissionRoleTableSeeder extends Seeder {
                         'role_id' => '14',
                         'permission_id' => '42',
                     ),
-                    6 => array(
-                        'role_id' => '14',
-                        'permission_id' => '57',
-                    ),
                     7 => array(
                         'role_id' => '14',
                         'permission_id' => '113',
@@ -76,10 +72,6 @@ class PermissionRoleTableSeeder extends Seeder {
                     14 => array(
                         'role_id' => '1',
                         'permission_id' => '42',
-                    ),
-                    15 => array(
-                        'role_id' => '1',
-                        'permission_id' => '57',
                     ),
                     16 => array(
                         'role_id' => '1',

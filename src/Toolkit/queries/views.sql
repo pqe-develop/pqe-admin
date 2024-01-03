@@ -34,7 +34,6 @@ CREATE OR REPLACE VIEW hrtm.salaries AS select * from hrdb.salaries;
 --
 CREATE OR REPLACE VIEW hrmc.resources AS SELECT * FROM hrdb.resources;
 CREATE OR REPLACE VIEW hrtm.resources AS select * from hrdb.resources;
-CREATE OR REPLACE VIEW pqedb.resources AS select * from hrdb.resources;
 --
 CREATE OR REPLACE VIEW pqedb.openai_cvs AS select * from hrtm.openai_cvs;
 --
@@ -82,7 +81,7 @@ CREATE OR REPLACE VIEW tpa_db.countries AS select * from admdb.countries;
 CREATE OR REPLACE VIEW template.countries AS select * from admdb.countries;
 CREATE OR REPLACE VIEW travel_db.countries AS select * from admdb.countries;
 --
-CREATE OR REPLACE VIEW hrtm.contracts AS select * from hrdb.contracts
+CREATE OR REPLACE VIEW hrtm.contracts AS select * from hrdb.contracts;
 --
 CREATE OR REPLACE VIEW hrtm.contract_details AS select * from hrdb.contract_details;
 --

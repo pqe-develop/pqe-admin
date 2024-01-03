@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW companies AS select admdb.companies.* from admdb.companies");
+        DB::statement("CREATE OR REPLACE VIEW companies AS select admdb.companies.* from admdb.companies");
     }
 
     /**

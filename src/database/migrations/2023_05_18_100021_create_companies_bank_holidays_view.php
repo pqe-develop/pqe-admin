@@ -12,6 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
+        DB::statement("DROP VIEW IF EXISTS companies_bank_holidays");
         DB::statement("CREATE VIEW companies_bank_holidays AS select admdb.companies_bank_holidays.* from admdb.companies_bank_holidays");
     }
 

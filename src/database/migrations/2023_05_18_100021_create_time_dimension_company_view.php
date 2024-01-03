@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW time_dimension_company AS select admdb.time_dimension_company.* from admdb.time_dimension_company");
+        DB::statement("CREATE OR REPLACE VIEW time_dimension_company AS select admdb.time_dimension_company.* from admdb.time_dimension_company");
     }
 
     /**

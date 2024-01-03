@@ -27,9 +27,19 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON hrdb.resources TO `hradmin`@`%`;
 -- pqeadmin
 GRANT SELECT, INSERT, UPDATE, DELETE ON hrtm.openai_cvs TO `pqeadmin`@`%`;
 GRANT SELECT, INSERT, UPDATE, DELETE ON hrdb.resources TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.companies TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.companies TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.companies_bank_holidays TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.company_country TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.countries TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.currencies TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.currency_histories TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.time_dimension_company TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.teams TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.users TO `pqeadmin`@`%`;
 -- prfadmin
 GRANT SELECT ON suitecrm.pqe_rdi TO `prfadmin`@`%`;
-GRANT VIEW ON suitecrm.v_pqe_rdi_labeled TO `prfadmin`@`%`;
+GRANT SELECT ON suitecrm.v_pqe_rdi_labeled TO `prfadmin`@`%`;
 
 GRANT SELECT ON admdb.companies TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `prfadmin`@`%`;

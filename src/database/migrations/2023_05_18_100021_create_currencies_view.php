@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("CREATE VIEW currencies AS select admdb.currencies.* from admdb.currencies");
+        DB::statement("CREATE OR REPLACE VIEW currencies AS select admdb.currencies.* from admdb.currencies");
     }
 
     /**

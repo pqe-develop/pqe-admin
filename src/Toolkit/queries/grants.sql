@@ -1,5 +1,5 @@
 -- bidnt_admin
-GRANT SELECT ON admdb.companies TO `bidnt_admin`@`%`;
+GRANT SELECT ON admdb.cities TO `bidnt_admin`@`%`;
 GRANT SELECT ON admdb.companies TO `bidnt_admin`@`%`;
 GRANT SELECT ON admdb.companies_bank_holidays TO `bidnt_admin`@`%`;
 GRANT SELECT ON admdb.company_country TO `bidnt_admin`@`%`;
@@ -10,7 +10,7 @@ GRANT SELECT ON admdb.time_dimension_company TO `bidnt_admin`@`%`;
 GRANT SELECT ON admdb.teams TO `bidnt_admin`@`%`;
 GRANT SELECT ON admdb.users TO `bidnt_admin`@`%`;
 -- hradmin
-GRANT SELECT ON admdb.companies TO `hradmin`@`%`;
+GRANT SELECT ON admdb.cities TO `hradmin`@`%`;
 GRANT SELECT ON admdb.companies TO `hradmin`@`%`;
 GRANT SELECT ON admdb.companies_bank_holidays TO `hradmin`@`%`;
 GRANT SELECT ON admdb.company_country TO `hradmin`@`%`;
@@ -27,7 +27,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON hrdb.resources TO `hradmin`@`%`;
 -- pqeadmin
 GRANT SELECT, INSERT, UPDATE, DELETE ON hrtm.openai_cvs TO `pqeadmin`@`%`;
 GRANT SELECT, INSERT, UPDATE, DELETE ON hrdb.resources TO `pqeadmin`@`%`;
-GRANT SELECT ON admdb.companies TO `pqeadmin`@`%`;
+GRANT SELECT ON admdb.cities TO `pqeadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `pqeadmin`@`%`;
 GRANT SELECT ON admdb.companies_bank_holidays TO `pqeadmin`@`%`;
 GRANT SELECT ON admdb.company_country TO `pqeadmin`@`%`;
@@ -41,7 +41,7 @@ GRANT SELECT ON admdb.users TO `pqeadmin`@`%`;
 GRANT SELECT ON suitecrm.pqe_rdi TO `prfadmin`@`%`;
 GRANT SELECT ON suitecrm.v_pqe_rdi_labeled TO `prfadmin`@`%`;
 
-GRANT SELECT ON admdb.companies TO `prfadmin`@`%`;
+GRANT SELECT ON admdb.cities TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.companies_bank_holidays TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.company_country TO `prfadmin`@`%`;
@@ -55,8 +55,19 @@ GRANT SELECT ON admdb.users TO `prfadmin`@`%`;
 GRANT SELECT ON hrdb.contracts TO `prfadmin`@`%`;
 GRANT SELECT ON hrdb.salaries TO `prfadmin`@`%`;
 GRANT SELECT, INSERT, UPDATE, DELETE ON hrdb.resources TO `prfadmin`@`%`;
+-- tpaadmin
+GRANT SELECT ON admdb.cities TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.companies TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.companies_bank_holidays TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.company_country TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.countries TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.currencies TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.currency_histories TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.teams TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.time_dimension_company TO `tpaadmin`@`%`;
+GRANT SELECT ON admdb.users TO `tpaadmin`@`%`;
 -- trvadmin
-GRANT SELECT ON admdb.companies TO `trvadmin`@`%`;
+GRANT SELECT ON admdb.cities TO `trvadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `trvadmin`@`%`;
 GRANT SELECT ON admdb.companies_bank_holidays TO `trvadmin`@`%`;
 GRANT SELECT ON admdb.company_country TO `trvadmin`@`%`;

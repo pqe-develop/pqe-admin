@@ -3,12 +3,11 @@
 namespace Pqe\Admin\Controllers;
 
 use Pqe\Admin\Models\InternalTraining;
-use Pqe\Admin\Requests\MassDestroyDropdownsRequest;
 use Pqe\Admin\Requests\StoreInternaltraningsRequest;
 use Pqe\Admin\Requests\UpdateInternaltraningsRequest;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Request;
+
 
 class InternalTrainingController extends Controller {
 

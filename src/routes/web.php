@@ -26,8 +26,8 @@ Route::group([
     ]
 ],
 function () {
-    Route::get('/home', 'DashboardController@indexBlade')->name('home');
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+//     Route::get('/home', 'HomeController@indexBlade')->name('home');
+//     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     
     // Users
     Route::get('/admin', 'UsersController@indexShow')->name('users.index');

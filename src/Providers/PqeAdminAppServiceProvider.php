@@ -59,7 +59,7 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
         // Load from package routes/views/middleware
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'pqeAdmin');
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'pqeAdmin');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'pqeAdmin');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 		$this->app->register(SeedServiceProvider::class);
 

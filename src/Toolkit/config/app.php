@@ -6,14 +6,14 @@ use Illuminate\Support\ServiceProvider;
 return [
 
     /*
-     * |--------------------------------------------------------------------------
-     * | Application Name
-     * |--------------------------------------------------------------------------
-     * |
-     * | This value is the name of your application. This value is used when the
-     * | framework needs to place the application's name in a notification or
-     * | any other location as required by the application or its packages.
-     * |
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application. This value is used when the
+    | framework needs to place the application's name in a notification or
+    | any other location as required by the application or its packages.
+    |
     */
 
     'name' => env('APP_NAME', 'TEMPLATE'),
@@ -57,7 +57,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'asset_url' => env('ASSET_URL'),
 
     /*
     |--------------------------------------------------------------------------

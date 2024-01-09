@@ -1,6 +1,6 @@
 <?php
 
-namespace Pqe\Admin\Controllers;
+namespace App\Http\Controllers;
 
 class HomeController extends Controller {
 

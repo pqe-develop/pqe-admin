@@ -40,7 +40,7 @@ class LoginController extends Controller {
      */
     public function __construct() {
         $this->middleware('guest')->except('logout');
-//         $this->middleware('web');
+        // $this->middleware('web');
     }
 
     public function showLoginForm() {
@@ -53,7 +53,7 @@ class LoginController extends Controller {
     public function showLoginFormInertia() {
         return Inertia::render('Auth/Login');
     }
-    
+
     public function username() {
         return 'username';
     }
@@ -67,37 +67,37 @@ class LoginController extends Controller {
 
     public function login(LoginRequest $request) {
         $this->validateLogin($request);
-        
+
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
         if (method_exists($this, 'hasTooManyLoginAttempts') && $this->hasTooManyLoginAttempts($request)) {
-                    $this->fireLockoutEvent($request);
-                    
-                    return $this->sendLockoutResponse($request);
-                }
-                
-                if ($this->attemptLogin($request)) {
-                    if ($request->hasSession()) {
-                        $request->session()->put('auth.password_confirmed_at', time());
-                    }
-                    
-                    return $this->sendLoginResponse($request);
-                }
-                
-                // If the login attempt was unsuccessful we will increment the number of attempts
-                // to login and redirect the user back to the login form. Of course, when this
-                // user surpasses their maximum number of attempts they will get locked out.
-                $this->incrementLoginAttempts($request);
-                
-                return $this->sendFailedLoginResponse($request);
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            if ($request->hasSession()) {
+                $request->session()->put('auth.password_confirmed_at', time());
+            }
+
+            return $this->sendLoginResponse($request);
+        }
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
     }
-    
+
     protected function attemptLogin(LoginRequest $request) {
         $credentials = $request->only($this->username(), 'password');
 
         $username = $credentials[$this->username()];
-//         $password = $credentials['password'];
+        // $password = $credentials['password'];
         // TODO
         // gestire isadmin dell'utente ....
 
@@ -136,9 +136,9 @@ class LoginController extends Controller {
                 // Input users credentials are not matched with the admin records present in users table
                 if (Auth::guard('users')->attempt(
                         [
-                    'username' => $request->username,
-                    'password' => $request->password
-                ], $request->remember)) {
+                            'username' => $request->username,
+                            'password' => $request->password
+                        ], $request->remember)) {
                     // Input users credentials are correct, so we can fetch the admin details and login to application.
                     $this->guard()->login($user, true);
                     return true;
@@ -150,29 +150,29 @@ class LoginController extends Controller {
             // LDAP auth
             // if (Adldap::auth()->attempt($username, $password, $bindAsUser = true)) {
             // if (Adldap::auth()->attempt($username, $password, true)) {
-//             $loginRequest = new LoginRequest();
-//             $loginRequest = $request;
+            // $loginRequest = new LoginRequest();
+            // $loginRequest = $request;
             $request->authenticate();
-            
+
             $request->session()->regenerate();
-            
+
             if (env('APP_INERTIA')) {
                 return redirect()->intended(PqeAdminAppServiceProvider::HOME);
             } else {
                 return redirect()->intended(PqeAdminAppServiceProvider::HOMEBLADE);
             }
-            
-//             $credentialsLdap = array(
-//                 'samaccountname' => $username,
-//                 'password' => $password,
-//             );
-//             if (Auth::attempt($credentialsLdap)) {
-//                 $this->guard()->login($user, true);
-//                 return true;
-//             } else {
-//                 // Input users credentials are not matched with the admin records present in users table
-//                 return false;
-//             }
+
+            // $credentialsLdap = array(
+            // 'samaccountname' => $username,
+            // 'password' => $password,
+            // );
+            // if (Auth::attempt($credentialsLdap)) {
+            // $this->guard()->login($user, true);
+            // return true;
+            // } else {
+            // // Input users credentials are not matched with the admin records present in users table
+            // return false;
+            // }
         }
 
         // the user doesn't exist in the LDAP server or the password is wrong
@@ -180,60 +180,60 @@ class LoginController extends Controller {
         return false;
     }
 
-//     protected function retrieveSyncAttributes($username) {
-//         $ldapuser = Adldap::search()->findBy('samaccountname', $username); // userprincipalname or samaccountname
-//         if (!$ldapuser) {
-//             // log error
-//             return false;
-//         }
-//         // if you want to see the list of available attributes in your specific LDAP server:
-//         // var_dump($ldapuser->attributes); exit;
-//         // needed if any attribute is not directly accessible via a method call.
-//         // attributes in \Adldap\Models\User are protected, so we will need
-//         // to retrieve them using reflection.
-//         $ldapuser_attrs = null;
+    // protected function retrieveSyncAttributes($username) {
+    // $ldapuser = Adldap::search()->findBy('samaccountname', $username); // userprincipalname or samaccountname
+    // if (!$ldapuser) {
+    // // log error
+    // return false;
+    // }
+    // // if you want to see the list of available attributes in your specific LDAP server:
+    // // var_dump($ldapuser->attributes); exit;
+    // // needed if any attribute is not directly accessible via a method call.
+    // // attributes in \Adldap\Models\User are protected, so we will need
+    // // to retrieve them using reflection.
+    // $ldapuser_attrs = null;
 
-//         $attrs = [];
+    // $attrs = [];
 
-//         foreach (config('ldap_auth.sync_attributes') as $local_attr => $ldap_attr) {
-//             if ($local_attr == 'username') {
-//                 continue;
-//             }
+    // foreach (config('ldap_auth.sync_attributes') as $local_attr => $ldap_attr) {
+    // if ($local_attr == 'username') {
+    // continue;
+    // }
 
-//             $method = 'get' . $ldap_attr;
-//             if (method_exists($ldapuser, $method)) {
-//                 $attrs[$local_attr] = $ldapuser->$method();
-//                 continue;
-//             }
+    // $method = 'get' . $ldap_attr;
+    // if (method_exists($ldapuser, $method)) {
+    // $attrs[$local_attr] = $ldapuser->$method();
+    // continue;
+    // }
 
-//             if ($ldapuser_attrs === null) {
-//                 $ldapuser_attrs = self::accessProtected($ldapuser, 'attributes');
-//             }
+    // if ($ldapuser_attrs === null) {
+    // $ldapuser_attrs = self::accessProtected($ldapuser, 'attributes');
+    // }
 
-//             if (!isset($ldapuser_attrs[$ldap_attr])) {
-//                 // an exception could be thrown
-//                 $attrs[$local_attr] = null;
-//                 continue;
-//             }
+    // if (!isset($ldapuser_attrs[$ldap_attr])) {
+    // // an exception could be thrown
+    // $attrs[$local_attr] = null;
+    // continue;
+    // }
 
-//             if (!is_array($ldapuser_attrs[$ldap_attr])) {
-//                 $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr];
-//             }
+    // if (!is_array($ldapuser_attrs[$ldap_attr])) {
+    // $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr];
+    // }
 
-//             if (count($ldapuser_attrs[$ldap_attr]) == 0) {
-//                 // an exception could be thrown
-//                 $attrs[$local_attr] = null;
-//                 continue;
-//             }
+    // if (count($ldapuser_attrs[$ldap_attr]) == 0) {
+    // // an exception could be thrown
+    // $attrs[$local_attr] = null;
+    // continue;
+    // }
 
-//             // now it returns the first item, but it could return
-//             // a comma-separated string or any other thing that suits you better
-//             $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr][0];
-//             // $attrs[ $local_attr] = implode(',', $ldapuser_attrs[$ldap_attr]);
-//         }
+    // // now it returns the first item, but it could return
+    // // a comma-separated string or any other thing that suits you better
+    // $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr][0];
+    // // $attrs[ $local_attr] = implode(',', $ldapuser_attrs[$ldap_attr]);
+    // }
 
-//         return $attrs;
-//     }
+    // return $attrs;
+    // }
 
     // protected static function accessProtected($obj, $prop) {
     // $reflection = new ReflectionClass($obj);

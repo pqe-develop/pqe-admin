@@ -13,7 +13,7 @@ class TeamUserTableSeeder extends Seeder {
      * @return void
      */
     public function run() {
-//         DB::table('team_user')->delete();
+        DB::table('team_user')->delete();
 
         DB::table('team_user')->insert(array(
             0 => array(

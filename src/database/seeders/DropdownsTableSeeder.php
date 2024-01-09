@@ -4,6 +4,7 @@ namespace Pqe\Admin\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Pqe\Admin\Models\Dropdowns;
 
 class DropdownsTableSeeder extends Seeder
 {
@@ -15,7 +16,8 @@ class DropdownsTableSeeder extends Seeder
      */
     public function run()
     {
-        //         DB::table('dropdowns')->delete();
+        Dropdowns::destroy([1,2]);
+        
         DB::table('dropdowns')->insert(
                 array(
                     0 => array(

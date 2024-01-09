@@ -17,33 +17,21 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         try {
-        $this->call(PermissionsTableSeeder::class);
-        } catch (Exception $e) {
-            echo "Errors on Permissions\n";
-        }
-        try {
-        $this->call(RolesTableSeeder::class);
-        } catch (Exception $e) {
-            echo "Errors on Roles\n";
-        }
-        try {
         $this->call(PermissionRoleTableSeeder::class);
         } catch (Exception $e) {
+            echo $e->getMessage();
             echo "Errors on PermissionRole\n";
         }
         try {
         $this->call(TeamUserTableSeeder::class);
         } catch (Exception $e) {
+            echo $e->getMessage();
             echo "Errors on TeamUser\n";
-        }
-        try {
-        $this->call(RoleUserTableSeeder::class);
-        } catch (Exception $e) {
-            echo "Errors on RoleUser\n";
         }
         try {
             $this->call(DropdownsTableSeeder::class);
         } catch (Exception $e) {
+            echo $e->getMessage();
             echo "Errors on Dropdowns\n";
         }
     }

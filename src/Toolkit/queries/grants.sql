@@ -55,6 +55,17 @@ GRANT SELECT ON admdb.users TO `prfadmin`@`%`;
 GRANT SELECT ON hrdb.contracts TO `prfadmin`@`%`;
 GRANT SELECT ON hrdb.salaries TO `prfadmin`@`%`;
 GRANT SELECT, INSERT, UPDATE, DELETE ON hrdb.resources TO `prfadmin`@`%`;
+-- subsadmin
+GRANT SELECT ON admdb.cities TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.companies TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.companies_bank_holidays TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.company_country TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.countries TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.currencies TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.currency_histories TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.time_dimension_company TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.teams TO `subsadmin`@`%`;
+GRANT SELECT ON admdb.users TO `subsadmin`@`%`;
 -- tpaadmin
 GRANT SELECT ON admdb.cities TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `tpaadmin`@`%`;

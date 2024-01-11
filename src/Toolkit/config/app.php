@@ -167,9 +167,6 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
-        Reliese\Coders\CodersServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Pqe\Admin\Providers\PqeAdminAppServiceProvider::class, // create after all so package routes are at the end
     ])->toArray(),

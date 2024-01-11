@@ -70,7 +70,7 @@
           	</a>
     
             <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; text-align: left; color: white;"> <img src="{{ url('/layout/images/Logo HR quadrato.png') }}" border="0" style="width: 7%" />
-             {{ trans('panel.site_menu') }}
+             {{ trans('panel.site_title') }}
             </span>
     
             <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; color: white; color: #ffff; width:45%;">

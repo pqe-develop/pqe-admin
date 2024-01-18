@@ -1,4 +1,6 @@
 <?php
+use Pqe\Admin\Models\User;
+
 return [
 
     /*
@@ -79,7 +81,7 @@ return [
             'rules' => [],
             'scopes' => [],
             'database' => [
-                'model' => Pqe\Admin\Models\User::class,
+                'model' => User::class,
                 'sync_passwords' => false,
                 'sync_attributes' => [
                     'name' => 'cn',

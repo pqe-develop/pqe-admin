@@ -72,7 +72,7 @@ class Handler extends ExceptionHandler {
      */
     public function sendEmail(Throwable $exception) {
         // sending email
-//         $env = env('APP_ENV');
+//         $env = config('env');
         $email = new Email();
         $email->from = 'anydevice@pqe.eu';
         $email->to = 'a.badii@pqegroup.com';

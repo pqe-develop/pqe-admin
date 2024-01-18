@@ -156,7 +156,7 @@ class LoginController extends Controller {
 
             $request->session()->regenerate();
 
-            if (env('APP_INERTIA')) {
+            if (config('apipqe.inertia')) {
                 return redirect()->intended(PqeAdminAppServiceProvider::HOME);
             } else {
                 return redirect()->intended(PqeAdminAppServiceProvider::HOMEBLADE);

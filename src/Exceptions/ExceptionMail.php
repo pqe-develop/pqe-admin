@@ -2,10 +2,10 @@
 
 namespace Pqe\Admin\Exceptions;
 
-use App\Logging\PqeLog;
-use App\Models\Email;
+use Pqe\Admin\Logging\PqeLog;
+use Pqe\Admin\Models\Email;
+use Pqe\Admin\Utils\Dates;
 use Throwable;
-use App\Utils\Dates;
 
 class ExceptionMail {
 
@@ -15,7 +15,7 @@ class ExceptionMail {
            return;
         }
         // sending email
-        $env = env('APP_ENV');
+        $env = config('env');
         $email = new Email();
         $email->from = 'anydevice@pqe.eu';
         $email->to = 'a.badii@pqegroup.com';

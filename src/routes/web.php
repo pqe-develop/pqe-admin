@@ -117,12 +117,7 @@ function () {
     Route::resource('dropdowns', 'DropdownsController');
     Route::get('dependent-dropdown', 'DropdownsController@getDropdownValues')->name('dependent-dropdown');
     
-    //Internal Training
-    Route::resource('internal-trainings', 'InternalTrainingController');
 
-
-    //visa Types
-    Route::resource('visatypes', 'VisaTypeController');
     // Global Search
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });

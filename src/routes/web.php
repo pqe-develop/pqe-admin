@@ -120,6 +120,9 @@ function () {
     //Internal Training
     Route::resource('internal-trainings', 'InternalTrainingController');
 
+
+    //visa Types
+    Route::resource('visatypes', 'VisaTypeController');
     // Global Search
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 });

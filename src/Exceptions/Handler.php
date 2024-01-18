@@ -3,6 +3,7 @@ namespace Pqe\Admin\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Pqe\Admin\Models\Email;
 
 class Handler extends ExceptionHandler {
     /**
@@ -69,38 +70,14 @@ class Handler extends ExceptionHandler {
      * @param \Exception $exception
      * @return void
      */
-    // TODO
     public function sendEmail(Throwable $exception) {
-        /*
-         * // sending email
-         * $email = new Email();
-         * $email->from = 'anydevice@pqe.eu';
-         * $email->to = 'a.badii@pqegroup.com';
-         * if (isset($GLOBALS['logChannel'])) {
-         * $channel = $GLOBALS['logChannel'];
-         * switch ($channel) {
-         * case 'hubspot' :
-         * // $email->cc = 'g.stori@pqegroup.com';
-         * $email->subject = 'Hubspot Exception';
-         * break;
-         * case 'infinity' :
-         * $email->subject = 'Zucchetti Infinity Exception';
-         * break;
-         * case 'hrzhrms' :
-         * $email->subject = 'Zucchetti HR-HRMS Exception';
-         * break;
-         * case 'edms' :
-         * $email->subject = 'EDMS Exception';
-         * break;
-         * default:
-         * $email->subject = $channel . ' Exception';
-         * break;
-         * }
-         * } else {
-         * $email->subject = 'Generic Exception';
-         * }
-         * $email->body = $exception->getMessage();
-         * $email->createEmail();
-         */
+        // sending email
+//         $env = env('APP_ENV');
+        $email = new Email();
+        $email->from = 'anydevice@pqe.eu';
+        $email->to = 'a.badii@pqegroup.com';
+        //$email->subject = ExceptionMail::getSubject($GLOBALS['logChannel'], $env);
+        $email->body = $exception->getMessage();
+        $email->createEmail();
     }
 }

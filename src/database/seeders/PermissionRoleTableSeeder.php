@@ -44,6 +44,7 @@ class PermissionRoleTableSeeder extends Seeder
                     120,
                     632,
                     633,
+					634,
                 ]);
 
         DB::table('roles')->insert(
@@ -184,6 +185,12 @@ class PermissionRoleTableSeeder extends Seeder
                         'created_at' => '2022-10-06 14:11:46',
                         'updated_at' => '2022-10-06 14:11:46',
                     ),
+                    21 => array(
+                        'id' => '634',
+                        'title' => 'visa_access',
+                        'created_at' => '2022-10-06 14:11:46',
+                        'updated_at' => '2022-10-06 14:11:46',
+                    ),
                 ));
 
         DB::table('permission_role')->insert(
@@ -295,6 +302,10 @@ class PermissionRoleTableSeeder extends Seeder
                     28 => array(
                         'role_id' => '1',
                         'permission_id' => '1',
+                    ),
+                    29 => array(
+                        'role_id' => '1',
+                        'permission_id' => '634',
                     ),
                 ));
 

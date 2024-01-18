@@ -69,6 +69,14 @@
     						</i> {{ trans('pqeAdmin::cruds.dropdowns.title') }}
     				</a>
 				@endcan
+                @can('visa_access')
+    				<a href="{{ route('visatypes.index') }}"
+    						class="dropdown-item bg-dark {{ request()->is('dropdowns') || request()->is('dropdowns/*') ? 'active' : '' }}">
+    						<i class="fa-fw nav-icon fas fa-cogs">
+      
+    						</i> {{ trans('cruds.visatype.title') }}
+    				</a>
+				@endcan
             </div>
         </li>
     @endcan

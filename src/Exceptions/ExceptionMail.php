@@ -15,7 +15,7 @@ class ExceptionMail {
            return;
         }
         // sending email
-        $env = config('env');
+        $env = config('app.env');
         $email = new Email();
         $email->from = 'anydevice@pqe.eu';
         $email->to = 'a.badii@pqegroup.com';

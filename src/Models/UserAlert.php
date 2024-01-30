@@ -35,7 +35,7 @@ class UserAlert extends Model
 
     public function userUserAlerts()
     {
-        return $this->hasMany('Pqe\Admin\Models\UserUserAlert');
+        return $this->hasMany(UserUserAlert::class);
     }
 
 }

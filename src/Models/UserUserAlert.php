@@ -30,6 +30,6 @@ class UserUserAlert extends Model
      */
     public function userAlert()
     {
-        return $this->belongsTo('Pqe\Admin\Models\UserAlert');
+        return $this->belongsTo(UserAlert::class);
     }
 }

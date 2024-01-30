@@ -6,7 +6,7 @@ namespace Pqe\Admin\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model {
-    // protected $table = "mails";
+    public $table = "emails";
     protected $dates = [
         'sent_at',
         'sending_at',

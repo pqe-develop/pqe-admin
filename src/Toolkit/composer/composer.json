@@ -33,7 +33,7 @@
 		"spatie/laravel-medialibrary" : "^10.15",
 		"symfony/http-client" : "^6.3",
 		"symfony/postmark-mailer" : "^6.3",
-		"tightenco/ziggy": "^1.0"
+		"tightenco/ziggy": "^1.0",
 		"yajra/laravel-datatables-oracle" : "^10.11"
 	},
 	"require-dev" : {

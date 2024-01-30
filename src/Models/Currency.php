@@ -31,6 +31,12 @@ class Currency extends Model {
         return $this->hasMany(CurrencyHistory::class, 'currency_id', 'id');
     }
 
+    // hasMany relationship with CurrencyHistory model (one-to-many) currency_id foreign key in currency_histories table
+    public function currencyHistory()
+    {
+        return $this->hasMany(CurrencyHistory::class, 'currency_id');
+    }
+
     public function country() {
         return $this->belongsTo(Country::class, 'country_id');
     }

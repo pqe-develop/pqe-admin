@@ -126,6 +126,21 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+/* PQE Example cache
+        'suite_data_cache_log' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/suite_data_cache.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
     ],
+
+        'monthly_payslip_cache_log' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/monthly_payslip_cache.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+    ],
+*/    
 
 ];

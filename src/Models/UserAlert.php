@@ -32,4 +32,10 @@ class UserAlert extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function userUserAlerts()
+    {
+        return $this->hasMany('Pqe\Admin\Models\UserUserAlert');
+    }
+
 }

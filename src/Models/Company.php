@@ -33,6 +33,12 @@ class Company extends Model {
         'deleted_at',
     ];
 
+    public static function getCompanyByName($companyName)
+    {
+        $company = Company::where('company', $companyName)->get();
+        return $company;
+    }
+
     protected function serializeDate(DateTimeInterface $date) {
         return $date->format('Y-m-d H:i:s');
     }

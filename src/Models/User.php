@@ -32,6 +32,8 @@ class User extends Authenticatable {
         'email_verified_at',
         'password',
         'remember_token',
+        'guid',
+        'domain',
         'created_at',
         'updated_at',
     ];

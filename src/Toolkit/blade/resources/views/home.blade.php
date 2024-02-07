@@ -66,23 +66,20 @@
     	<div class="container">
     
     		<a class="navbar-brand" href="#">
-            	<img src="{{ url('/layout/images/PQE-Group_white_yellow-glyph.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;"> 
+	            <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" >
+					<img src="{{ url('/layout/images/logo PQE 2024.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 10%;"> 
+        	    </span>
           	</a>
-    
-            <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; text-align: left; color: white;"> <img src="{{ url('/layout/images/Logo HR quadrato.png') }}" border="0" style="width: 7%" />
+            <div align="center">
+            	<span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 36px; align: left; font-style: oblique; background-color: lightyellow; color: black; width: 50%">
              {{ trans('panel.site_title') }}
             </span>
-    
-            <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; color: white; color: #ffff; width:45%;">
+			</div>
+            <div align="right">
+            	<span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; align: right; background-color: lightcyan; color: black;">
              User: {{auth()->user()->username }} - {{auth()->user()->name }}
     		</span>
-    
-            <a class="float-right navbar-text d-flex d-inline-flex" style="padding-top : auto; font-size:18px ;color: white; color: #ffff;" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-              <i class="fas fa-fw fa-sign-out-alt nav-icon d-inline-flex"> </i> {{ trans('pqeAdmin::global.logout') }}
-            </a>
-        	<form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
-          		{{ csrf_field() }}
-        	</form>
+            </div>
       	</div>
 	</nav>
 
@@ -92,6 +89,14 @@
       		<p>{{$message}}</p>
 		</div>
     	@endif
+        <div align="right">
+                <a class="float-right navbar-text d-flex d-inline-flex" style="padding-right : auto; font-size:36px ;background-color: aliceblue; color: black;" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <i class="fas fa-fw fa-sign-out-alt nav-icon d-inline-flex"> </i> {{ trans('pqeAdmin::global.logout') }}
+                </a>
+                <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+        </div>
     	<div align="center" style="background-color: white" class="row">
       		<div style="float: left; width: 20%" class="col">
         		<a href="{{ url('/dashboard')}}" target="_blank">
@@ -105,7 +110,9 @@
         		</a>
           		<p style="font-size: 30px;">{{ trans('pqeAdmin::global.admin') }}</p>
       		</div>
-      		<div style="float: left; width: 20%"></div>
+            <div style="float: left; width: 20%" class="col"></div>
+            <div style="float: left; width: 20%" class="col"></div>
+            <div style="float: left; width: 20%" class="col"></div>
 	    	<div class=".bckgrd">
       			<img src="{{ url('/layout/images/sfondo.jpg') }}" style="width: 100%; height: 50%" />
     		</div>

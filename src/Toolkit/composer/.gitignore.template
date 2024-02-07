@@ -1,0 +1,163 @@
+#- Ignore on git ...
+
+## IDE specific items
+
+# Various
+/builds
+
+# Eclipse
+
+.classpath
+.project
+.settings/
+
+# NPM
+.npm
+
+# Emacs
+
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+
+# IntelliJ Idea
+
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# NetBeans
+
+nbproject/
+
+# VSCode
+.vscode
+
+# Vim
+
+.*.sw[a-z]
+*.un~
+Session.vim
+.vim
+.viminfo
+.vimrc
+.*swp
+.rnd
+.gnupg/
+.editorconfig
+
+# Git
+
+.gitconfig
+.gitlab-runner
+.buildpath
+
+# Linux
+
+.ssh
+.cache
+.config
+.local
+.docker
+.mysql_history
+.bash_history
+.lesshst
+.wget-hsts
+.selected_editor
+.bash_logout
+.bashrc
+.profile
+.phpls
+
+# Windows
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+.DS_Store?
+
+# Disytel
+
+lang_cmp.php
+.rediscli_history
+.Xauthority
+
+#- SuiteCRM
+
+/cache
+/custom/pqe/connections/conn.php
+custom/application/Ext
+custom/modules/*/Ext
+/.htaccess
+/config.php
+/config_override.php
+/custom/themes/default/images/company_logo.png
+/custom/themes/default/images/logo PQE blue 2020.png
+/repository
+/upload
+/custom/tmp
+
+# Logs files can safely be ignored.
+
+*.log
+*.log.*.gz
+*.log.[0-9]
+*.log.[0-9][0-9]
+
+#- Frameworks
+
+#- disable for SuiteCRM
+/vendor 
+composer.lock
+
+#- Node/Vue
+/node_modules
+package-lock.json
+.node_repl_history
+/.npm/_logs
+npm-debug.log
+.nvm/
+public/build
+public/js/vendor.js
+public/css/app.css
+public/js/app.js
+
+#- Laravel
+public/js/manifest.js*
+.env
+/public/hot
+/public/storage
+
+#- Travel
+
+env.php
+pqe/include/conn.php
+pqe/include/conn_suite.php
+
+
+#- PHP Unit
+
+.phpunit.result.cache
+.phpunit.cache/test-results
+
+#- Batch
+
+Errors_*.txt
+params/db.php
+params/db-save.php
+utils/files/error.log
+
+#- Various
+
+nohup.out
+Homestead.json
+Homestead.yaml
+auth.json
+yarn-error.log
+storage/oauth-private.key
+storage/oauth-public.key

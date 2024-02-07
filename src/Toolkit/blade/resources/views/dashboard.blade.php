@@ -68,11 +68,10 @@
       <!-- 		<nav class="topnav"> -->
 
       <a class="navbar-brand" href="#">
-<!--         <img src="http://www.pqegroup.com/wp-content/uploads/2018/07/PQE-Group_white_yellow-glyph-e1530697715100.png" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;">  -->
-             <img src="{{ url('/layout/images/PQE-Group_white_yellow-glyph.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;"> 
+             <img src="{{ url('/layout/images/logo PQE 2024.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;"> 
       </a>
 
-          <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; text-align: left; color: white;"> <img src="{{ url('/layout/images/Logo HR quadrato.png') }}" border="0" style="width: 7%" /> PQE Admin
+          <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; text-align: left; color: white;"> <img src="{{ url('/layout/images/logo HR quadrato large 2020.png') }}" border="0" style="width: 7%" /> PQE Admin
         </span>
 
         <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; color: white; color: #ffff; width:45%;">

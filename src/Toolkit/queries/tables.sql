@@ -1,4 +1,4 @@
-use subs_db;
+use pqedb;
 
 DROP TABLE IF EXISTS `audit_logs`;
 DROP TABLE IF EXISTS `dropdowns`;

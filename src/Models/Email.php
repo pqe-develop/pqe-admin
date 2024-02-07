@@ -31,6 +31,6 @@ class Email extends Model {
     public function createEmail() {
         $this->status = 'Tosend';
         $this->source = 'Internal';
-        $this->save();
+//         $this->save();
     }
 }

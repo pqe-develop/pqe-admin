@@ -77,6 +77,7 @@ GRANT SELECT ON admdb.currency_histories TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.teams TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.time_dimension_company TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.users TO `tpaadmin`@`%`;
+GRANT SELECT, INSERT, UPDATE, DELETE ON admdb.emails TO `tpaadmin`@`%`;
 -- trvadmin
 GRANT SELECT ON admdb.cities TO `trvadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `trvadmin`@`%`;

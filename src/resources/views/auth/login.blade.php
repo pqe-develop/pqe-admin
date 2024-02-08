@@ -3,7 +3,7 @@
 <div class="login-box">
     <div class="login-logo">
         <a href="{{ route('home') }}">
-		   <img src="{{ url('/images/Logo_PQE_rettangolare.png') }}" border="0" width="300" height="150" alt="{{ trans('panel.site_title') }}"/> 
+		   <img src="{{ url('/layout/images/Logo_PQE_rettangolare.png') }}" border="0" width="300" height="150" alt="{{ trans('panel.site_title') }}"/> 
         </a>
     </div>
     <div class="card">

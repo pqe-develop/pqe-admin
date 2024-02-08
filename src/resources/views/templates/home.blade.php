@@ -69,10 +69,10 @@
 
       <a class="navbar-brand" href="#">
 <!--         <img src="http://www.pqegroup.com/wp-content/uploads/2018/07/PQE-Group_white_yellow-glyph-e1530697715100.png" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;">  -->
-             <img src="{{ url('/images/PQE-Group_white_yellow-glyph.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;"> 
+             <img src="{{ url('/layout/images/PQE-Group_white_yellow-glyph.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 110%;"> 
       </a>
 
-          <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; text-align: left; color: white;"> <img src="{{ url('/images/Logo HR quadrato.png') }}" border="0" style="width: 7%" /> PQE Admin
+          <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; text-align: left; color: white;"> <img src="{{ url('/layout/images/Logo HR quadrato.png') }}" border="0" style="width: 7%" /> PQE Admin
         </span>
 
         <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" style="font-size: 18px; color: white; color: #ffff; width:45%;">
@@ -98,14 +98,14 @@
     <div align="center" style="background-color: white" class="row">
       <div style="float: left; width: 20%" class="col">
         <a href="{{ url('/admin')}}" target="_blank">
-          <img src="{{ url('/images/icona Admin.png') }}" border="0" style="width: 20%" />
+          <img src="{{ url('/layout/images/icona Admin.png') }}" border="0" style="width: 20%" />
         </a>
           <p style="font-size: 30px;">PQE Admin Home Page</p>
       </div>
     </div>
 
     <div class=".bckgrd">
-      <img src="{{ url('/images/sfondo.jpg') }}" style="width: 100%; height: 50%" />
+      <img src="{{ url('/layout/images/sfondo.jpg') }}" style="width: 100%; height: 50%" />
     </div>
   </div>
 </body>

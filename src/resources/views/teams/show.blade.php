@@ -42,6 +42,23 @@
     </div>
 </div>
 
+<div class="card">
+    <div class="card-header">
+        {{ trans('pqeAdmin::global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#teams_users" role="tab" data-toggle="tab">
+                {{ trans('pqeAdmin::cruds.user.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="roles_users">
+            @includeIf('teams.relationships.teamsUsers', ['users' => $team->teamsUsers])
+        </div>
+    </div>
+</div>
 
 
 @endsection

@@ -1,27 +1,6 @@
-use pqedb;
+use hrtm;
 
-DROP TABLE IF EXISTS `audit_logs`;
-DROP TABLE IF EXISTS `dropdowns`;
-DROP TABLE IF EXISTS `failed_jobs`;
-DROP TABLE IF EXISTS `jobs`;
-DROP TABLE IF EXISTS `migrations`;
-DROP TABLE IF EXISTS `oauth_access_tokens`;
-DROP TABLE IF EXISTS `oauth_auth_codes`;
-DROP TABLE IF EXISTS `oauth_clients`;
-DROP TABLE IF EXISTS `oauth_personal_access_clients`;
-DROP TABLE IF EXISTS `oauth_refresh_tokens`;
-DROP TABLE IF EXISTS `password_resets`;
-DROP TABLE IF EXISTS `permission_role`;
-DROP TABLE IF EXISTS `permissions`;
-DROP TABLE IF EXISTS `personal_access_tokens`;
-DROP TABLE IF EXISTS `role_user`;
-DROP TABLE IF EXISTS `roles`;
-DROP TABLE IF EXISTS `sessions`;
-DROP TABLE IF EXISTS `team_user`;
-DROP TABLE IF EXISTS `user_user_alert`;
-DROP TABLE IF EXISTS `user_alerts`;
-
-CREATE TABLE `audit_logs` (
+CREATE TABLE IF NOT EXISTS `audit_logs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(45) DEFAULT NULL,
   `description` text NOT NULL,
@@ -38,7 +17,7 @@ CREATE TABLE `audit_logs` (
   KEY `audit_logs_subject_type_subject_id_index` (`subject_type`,`subject_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `dropdowns` (
+CREATE TABLE IF NOT EXISTS `dropdowns` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `dropdown` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -50,7 +29,7 @@ CREATE TABLE `dropdowns` (
   UNIQUE KEY `dd_uk_1` (`dropdown`,`name`,`dd_filter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `failed_jobs` (
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(255) NOT NULL,
   `connection` text NOT NULL,
@@ -62,7 +41,7 @@ CREATE TABLE `failed_jobs` (
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `jobs` (
+CREATE TABLE IF NOT EXISTS `jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `queue` varchar(255) NOT NULL,
   `payload` longtext NOT NULL,
@@ -74,14 +53,14 @@ CREATE TABLE `jobs` (
   KEY `jobs_queue_index` (`queue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `migrations` (
+CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `oauth_access_tokens` (
+CREATE TABLE IF NOT EXISTS `oauth_access_tokens` (
   `id` varchar(100) NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `client_id` bigint(20) unsigned NOT NULL,
@@ -95,7 +74,7 @@ CREATE TABLE `oauth_access_tokens` (
   KEY `oauth_access_tokens_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `oauth_auth_codes` (
+CREATE TABLE IF NOT EXISTS `oauth_auth_codes` (
   `id` varchar(100) NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   `client_id` bigint(20) unsigned NOT NULL,
@@ -106,7 +85,7 @@ CREATE TABLE `oauth_auth_codes` (
   KEY `oauth_auth_codes_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `oauth_clients` (
+CREATE TABLE IF NOT EXISTS `oauth_clients` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `name` varchar(255) NOT NULL,
@@ -122,7 +101,7 @@ CREATE TABLE `oauth_clients` (
   KEY `oauth_clients_user_id_index` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `oauth_personal_access_clients` (
+CREATE TABLE IF NOT EXISTS `oauth_personal_access_clients` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `client_id` bigint(20) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -130,7 +109,7 @@ CREATE TABLE `oauth_personal_access_clients` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `oauth_refresh_tokens` (
+CREATE TABLE IF NOT EXISTS `oauth_refresh_tokens` (
   `id` varchar(100) NOT NULL,
   `access_token_id` varchar(100) NOT NULL,
   `revoked` tinyint(1) NOT NULL,
@@ -139,14 +118,14 @@ CREATE TABLE `oauth_refresh_tokens` (
   KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `password_resets` (
+CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `permissions` (
+CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -155,7 +134,7 @@ CREATE TABLE `permissions` (
   UNIQUE KEY `uq_perms` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `roles` (
+CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -164,7 +143,7 @@ CREATE TABLE `roles` (
   UNIQUE KEY `role_uq` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `role_user` (
+CREATE TABLE IF NOT EXISTS `role_user` (
   `user_id` int(10) unsigned NOT NULL,
   `role_id` int(10) unsigned NOT NULL,
   UNIQUE KEY `ru_uq_idx` (`user_id`,`role_id`),
@@ -172,7 +151,7 @@ CREATE TABLE `role_user` (
   CONSTRAINT `role_id_fk_1690886` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `permission_role` (
+CREATE TABLE IF NOT EXISTS `permission_role` (
   `role_id` int(10) unsigned NOT NULL,
   `permission_id` int(10) unsigned NOT NULL,
   UNIQUE KEY `permission_role_uk` (`role_id`,`permission_id`),
@@ -182,7 +161,7 @@ CREATE TABLE `permission_role` (
   CONSTRAINT `role_id_fk_1690877` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `personal_access_tokens` (
+CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) unsigned NOT NULL,
@@ -197,7 +176,7 @@ CREATE TABLE `personal_access_tokens` (
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `sessions` (
+CREATE TABLE IF NOT EXISTS `sessions` (
   `id` varchar(255) NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `ip_address` varchar(45) DEFAULT NULL,
@@ -209,14 +188,14 @@ CREATE TABLE `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `team_user` (
+CREATE TABLE IF NOT EXISTS `team_user` (
   `user_id` int(10) unsigned NOT NULL,
   `team_id` int(10) unsigned NOT NULL,
   `team_leader` varchar(45) DEFAULT NULL,
   UNIQUE KEY `tu_idx` (`user_id`,`team_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `user_alerts` (
+CREATE TABLE IF NOT EXISTS `user_alerts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `alert_text` varchar(255) NOT NULL,
   `alert_link` varchar(255) DEFAULT NULL,
@@ -227,7 +206,7 @@ CREATE TABLE `user_alerts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `user_user_alert` (
+SWCREATE TABLE IF NOT EXISTS `user_user_alert` (
   `user_alert_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `read` tinyint(1) NOT NULL DEFAULT 0,

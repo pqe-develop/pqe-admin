@@ -51,6 +51,7 @@ GRANT SELECT ON admdb.currency_histories TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.teams TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.time_dimension_company TO `prfadmin`@`%`;
 GRANT SELECT ON admdb.users TO `prfadmin`@`%`;
+GRANT SELECT, INSERT, UPDATE, DELETE ON pqedb.emails TO `prfadmin`@`%`;
 --
 GRANT SELECT ON hrdb.contracts TO `prfadmin`@`%`;
 GRANT SELECT ON hrdb.salaries TO `prfadmin`@`%`;
@@ -77,7 +78,7 @@ GRANT SELECT ON admdb.currency_histories TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.teams TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.time_dimension_company TO `tpaadmin`@`%`;
 GRANT SELECT ON admdb.users TO `tpaadmin`@`%`;
-GRANT SELECT, INSERT, UPDATE, DELETE ON admdb.emails TO `tpaadmin`@`%`;
+GRANT SELECT, INSERT, UPDATE, DELETE ON pqedb.emails TO `tpaadmin`@`%`;
 -- trvadmin
 GRANT SELECT ON admdb.cities TO `trvadmin`@`%`;
 GRANT SELECT ON admdb.companies TO `trvadmin`@`%`;

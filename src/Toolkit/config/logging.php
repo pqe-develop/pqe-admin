@@ -126,20 +126,81 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
-/* PQE Example cache
-        'suite_data_cache_log' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/suite_data_cache.log'),
+/* PQE Customize Logs */
+/*
+        // customize PQE
+        'hubspot' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/hubspot.log'),
             'level' => env('LOG_LEVEL', 'debug'),
-            'days' => 14,
+            'days' => 1
+        ],
+        'hubspot_scl' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/hubspot_scl.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'infinity' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/infinity.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'hrzhrms' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/hrzhrms.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'suitehrz' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/suitehrz.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'infinity-invoice' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/infinity_invoice.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'hubspot_wo' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/hubspot_wo.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'edms' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/edms.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'jobdiva' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/jobdiva.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'projects' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/projects.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
+        ],
+        'pandora' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/pandora.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 1
     ],
-
-        'monthly_payslip_cache_log' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/monthly_payslip_cache.log'),
+        'msteams' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/msteams.log'),
             'level' => env('LOG_LEVEL', 'debug'),
-            'days' => 14,
+            'days' => 1
         ],
 */
-    ],
+    ]
 ];

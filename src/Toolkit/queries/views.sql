@@ -76,6 +76,17 @@ CREATE OR REPLACE VIEW subs_db.currency_histories AS select * from admdb.currenc
 CREATE OR REPLACE VIEW tpa_db.currency_histories AS select * from admdb.currency_histories;
 CREATE OR REPLACE VIEW template.currency_histories AS select * from admdb.currency_histories;
 CREATE OR REPLACE VIEW travel_db.currency_histories AS select * from admdb.currency_histories;
+-- emails
+CREATE OR REPLACE VIEW bidnt_db.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW hrdb.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW hrtm.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW hrmc.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW prfdb.emails AS select * from pqedb.emails;
+-- CREATE OR REPLACE VIEW pqedb.emails AS select * from admdb.emails;
+CREATE OR REPLACE VIEW subs_db.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW tpa_db.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW template.emails AS select * from pqedb.emails;
+CREATE OR REPLACE VIEW travel_db.emails AS select * from pqedb.emails;
 -- it_city_zipcode
 CREATE OR REPLACE VIEW bidnt_db.it_city_zipcode AS select * from admdb.it_city_zipcode;
 CREATE OR REPLACE VIEW hrdb.it_city_zipcode AS select * from admdb.it_city_zipcode;
@@ -115,7 +126,7 @@ CREATE OR REPLACE VIEW hrdb.users AS select * from admdb.users;
 CREATE OR REPLACE VIEW hrtm.users AS select * from admdb.users;
 CREATE OR REPLACE VIEW hrmc.users AS select * from admdb.users;
 CREATE OR REPLACE VIEW prfdb.users AS select * from admdb.users;
-CREATE OR REPLACE VIEW pqedb.users AS select * from admdb.users;
+-- CREATE OR REPLACE VIEW pqedb.users AS select * from admdb.users;
 CREATE OR REPLACE VIEW subs_db.users AS select * from admdb.users;
 CREATE OR REPLACE VIEW tpa_db.users AS select * from admdb.users;
 CREATE OR REPLACE VIEW template.users AS select * from admdb.users;

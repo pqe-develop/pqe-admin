@@ -7,13 +7,14 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Passport\HasApiTokens;
 use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
 use LdapRecord\Laravel\Auth\HasLdapUser;
 use LdapRecord\Laravel\Auth\LdapAuthenticatable;
 use DateTimeInterface;
 
 class User extends Authenticatable implements LdapAuthenticatable {
-    use Notifiable, AuthenticatesWithLdap, HasLdapUser;
+    use Notifiable, AuthenticatesWithLdap, HasLdapUser, HasApiTokens;
     public $table = 'users';
     protected $hidden = [
         'remember_token',

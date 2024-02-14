@@ -51,6 +51,11 @@ class PqeLog extends Facade {
         Log::channel($channel)->notice($message);
     }
 
+    protected static function warning($message) {
+        $channel = $GLOBALS['logChannel'] ?? 'single';
+        Log::channel($channel)->warning($message);
+    }
+
     protected static function error($message) {
         $channel = $GLOBALS['logChannel'] ?? 'single';
         Log::channel($channel)->error($message);

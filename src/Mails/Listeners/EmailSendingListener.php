@@ -3,7 +3,7 @@
 namespace Pqe\Admin\Mails\Listeners;
 
 use Illuminate\Mail\Events\MessageSending;
-use Illuminate\Support\Facades\Log;
+use Pqe\Admin\Logging\PqeLog;
 use Pqe\Admin\Models\Email;
 use Carbon\Carbon;
 
@@ -27,7 +27,7 @@ class EmailSendingListener {
      */
     public function handle(MessageSending $email) {
         $emailid = $email->data['emailid'];
-        Log::debug("Email Sending", [
+        PqeLog::debug("Email Sending", [
 //             "Mail Auto generated id" => $email->message->getId(),
 //             "Mail Auto generated id" => $email->message->getHeaders()->get('X-Mailgun-Message-ID'),
             "Emailid" => $emailid

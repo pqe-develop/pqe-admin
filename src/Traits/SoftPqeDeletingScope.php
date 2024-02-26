@@ -49,7 +49,7 @@ class SoftPqeDeletingScope implements Scope {
                     $column = $this->getPqeDeletedColumn($builder);
 
                     return $builder->update([
-                        $column => $builder->getModel()->freshTimestampString(),
+                        $column => $builder->getModel()->freshTimestamp()->getTimestamp()
                     ]);
                 });
     }

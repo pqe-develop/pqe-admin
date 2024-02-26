@@ -93,8 +93,7 @@ trait SoftPqeDeletes {
     protected function runSoftDelete() {
         $query = $this->setKeysForSaveQuery($this->newModelQuery());
 
-        $time = $this->freshTimestamp();
-        $timeDelete = strtotime($time);
+        $timeDelete = $this->freshTimestamp()->getTimestamp();
 
         $columns = [
             $this->getPqeDeletedColumn() => $timeDelete

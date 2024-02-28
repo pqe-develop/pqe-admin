@@ -3,6 +3,7 @@
 namespace Pqe\Admin\Controllers\Auth;
 
 use Pqe\Admin\Controllers\Controller;
+use App\Providers\AppServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -125,14 +126,14 @@ class LoginController extends Controller {
             // Normal authentication for users
             // if("hr-admin" == mb_strtolower($request->username,'UTF-8')){
             // Check the input user credentials with our admin record in users table
-            if (Auth::guard('admin')->attempt([
-                'username' => $request->username,
-                'password' => $request->password
-            ], $request->remember)) {
-                // Input users credentials are correct, so we can fetch the admin details and login to application.
-                $this->guard()->login($user, true);
-                return true;
-            } else {
+//             if (Auth::guard('admin')->attempt([
+//                 'username' => $request->username,
+//                 'password' => $request->password
+//             ], $request->remember)) {
+//                 // Input users credentials are correct, so we can fetch the admin details and login to application.
+//                 $this->guard()->login($user, true);
+//                 return true;
+//             } else {
                 // Input users credentials are not matched with the admin records present in users table
                 if (Auth::guard('users')->attempt(
                         [
@@ -145,7 +146,7 @@ class LoginController extends Controller {
                 } else {
                     return false;
                 }
-            }
+//             }
         } else {
             // LDAP auth
             // if (Adldap::auth()->attempt($username, $password, $bindAsUser = true)) {
@@ -156,8 +157,9 @@ class LoginController extends Controller {
 
             $request->session()->regenerate();
 
-            if (config('apipqe.inertia')) {
-                return redirect()->intended(PqeAdminAppServiceProvider::HOME);
+            if (config('pqe.inertia')) {
+                session()->put('url.intended', "/dashboard");
+                return redirect()->intended(AppServiceProvider::HOME);
             } else {
                 return redirect()->intended(PqeAdminAppServiceProvider::HOMEBLADE);
             }

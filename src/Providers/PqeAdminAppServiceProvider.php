@@ -35,7 +35,7 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const DASHBOARD = '/dashboard';
 	public const HOMEBLADE = '/home';
 
     /**

@@ -3,6 +3,9 @@
 /* PQE env configuration */
 return [
 
+    // Inertia Flag
+    'inertia' => env('APP_INERTIA'),
+    
 /* PQE Examples 
     'leavingEmail' => env('LEAVING_EMAIL'),
     'hrAdmin' => env('HR_ADMIN'),

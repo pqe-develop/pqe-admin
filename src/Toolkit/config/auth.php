@@ -53,7 +53,7 @@ return [
         ],
         'users' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'pqeUsers',
         ]
     ],
 
@@ -92,6 +92,10 @@ return [
                     'name' => 'cn',
                 ],
             ],
+        ],
+        'pqeUsers' => [
+            'driver' => 'eloquent',
+            'model' => User::class,
         ],
     ],
 

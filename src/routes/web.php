@@ -12,7 +12,6 @@ Route::group([
 function () {
     Route::get('login', 'LoginController@showLoginForm')->name('auth.login');
     Route::post('login', 'LoginController@login')->name('login');
-    // Route::get('logout', 'LoginController@logout')->name('logout');
     Route::post('logout', 'LoginController@logout')->name('logout');
 });
 
@@ -26,7 +25,9 @@ Route::group([
     ]
 ],
 function () {
-//     Route::get('/home', 'HomeController@indexBlade')->name('home');
+    if (config('pqe.inertia')) {
+        Route::get('/home', 'UsersController@index')->name('users.index');
+    }
 //     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     
     // Users

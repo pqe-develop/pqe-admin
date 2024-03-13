@@ -25,10 +25,6 @@ Route::group([
     ]
 ],
 function () {
-    if (config('pqe.inertia')) {
-        Route::get('/home', 'UsersController@index')->name('users.index');
-    }
-//     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     
     // Users
     Route::get('/admin', 'UsersController@indexShow')->name('users.index');

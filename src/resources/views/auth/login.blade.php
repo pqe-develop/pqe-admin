@@ -2,7 +2,7 @@
 @section('content')
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ route('home') }}">
+        <a href="{{ route('dashboard') }}">
 		   <img src="{{ url('/layout/images/logo PQE 2024.png') }}" border="0" width="300" alt="{{ trans('panel.site_title') }}"/> 
         </a>
     </div>

@@ -1,5 +1,4 @@
 <?php
-
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -16,7 +15,7 @@ return [
     | messages to the logs. The name specified in this option should match
     | one of the channels defined in the "channels" configuration array.
     |
-    */
+     */
 
     'default' => env('LOG_CHANNEL', 'stack'),
 
@@ -89,7 +88,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'),
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],
@@ -194,13 +193,13 @@ return [
             'path' => storage_path('logs/pandora.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 1
-    ],
+        ],
         'msteams' => [
             'driver' => 'single',
             'path' => storage_path('logs/msteams.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 1
         ],
-*/
+*/        
     ]
 ];

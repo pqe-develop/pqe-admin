@@ -64,7 +64,6 @@
 	<!--Navigation-->
 	<nav class="main-header navbar navbar-expand bg-dark navbar-light border-bottom py-lg-0">
     	<div class="container">
-    
     		<a class="navbar-brand" href="#">
 	            <span class="navbar-text navbar-left d-flex d-inline-flex d-sm-inline-block" >
 					<img src="{{ url('/layout/images/logo PQE 2024.png') }}" alt="" class="brand-image image-circle elevation-3" style="opacity: .8; width: 10%;"> 

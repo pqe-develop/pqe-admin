@@ -3,7 +3,7 @@
 namespace Pqe\Admin\Controllers\Auth;
 
 use Pqe\Admin\Controllers\Controller;
-use App\Providers\AppServiceProvider;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -159,9 +159,9 @@ class LoginController extends Controller {
 
             if (config('pqe.inertia')) {
                 session()->put('url.intended', "/dashboard");
-                return redirect()->intended(AppServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME);
             } else {
-                return redirect()->intended(PqeAdminAppServiceProvider::HOMEBLADE);
+                return redirect()->intended(PqeAdminAppServiceProvider::HOMEADMIN);
             }
 
             // $credentialsLdap = array(

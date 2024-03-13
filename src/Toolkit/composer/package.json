@@ -23,7 +23,7 @@
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
         "postcss": "^8.4.23",
-        "prettier": "^3.0.3",
+        "prettier": "^3.0.3",        
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.69.5",
         "sass-loader": "^8.0.0",

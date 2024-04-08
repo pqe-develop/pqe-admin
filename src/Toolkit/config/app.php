@@ -168,6 +168,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Pqe\Admin\Providers\KafkaServiceProvider::class,
         Pqe\Admin\Providers\PqeAdminAppServiceProvider::class, // create after all so package routes are at the end
     ])->toArray(),
 

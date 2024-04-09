@@ -11,7 +11,7 @@ class PqeConsumer
     private $consumer;
     private $app;
 
-    public function __construct()
+    public function __construct($topicName)
     {
         $conf = new Conf();
         $conf->set('bootstrap.servers', config('pqe.kafkaServer');
@@ -19,7 +19,7 @@ class PqeConsumer
 
         $this->consumer = new KafkaConsumer($conf);
         $this->consumer->subscribe([
-            'pqe-admin'
+            $topicName
         ]);
     }
 
@@ -56,9 +56,16 @@ class PqeConsumer
 
     public function execute($payload)
     {
-        $action = $payload['action'];
-        $classExecute = new $payload['class']();
-        $result = $classExecute->$action($payload['id'], $payload['data']);
+        $method = $payload['method'];
+        $className = $payload['class'];
+        if (!class_exists($className)) {
+           throw new Exception('Class ' . $className . ' does not exist');
+        }
+        $objectConsume = new $className;
+        if (!method_exists($objectConsume, $method)) {
+           throw new Exception('Function ' . $method . ' in class ' . $className . ' does not exist');
+        }
+        $result = $objectConsume->$method($payload['kafkaId'], $payload['properties']);
         return $result;
     }
 }

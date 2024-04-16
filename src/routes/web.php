@@ -114,6 +114,10 @@ function () {
     Route::resource('dropdowns', 'DropdownsController');
     Route::get('dependent-dropdown', 'DropdownsController@getDropdownValues')->name('dependent-dropdown');
     
+    // Kafka Jobs
+    Route::delete('kafkaJobs/destroy', 'KafkaJobsController@massDestroy')->name('kafkaJobs.massDestroy');
+    Route::resource('kafkaJobs', 'KafkaJobsController');
+    
 
     // Global Search
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');

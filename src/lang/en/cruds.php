@@ -281,5 +281,14 @@ return [
             'prog_helper' => '',
         ]
     ],
-
+    'kafkaJobs' => [
+        'title' => 'Kafka Jobs',
+        'title_singular' => 'Kafka Job',
+        'fields' => [
+            'id' => 'ID',
+            'id_helper' => '',
+            'created_at' => 'Created at',
+            'created_at_helper' => '',
+        ]
+    ],
 ];

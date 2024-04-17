@@ -37,6 +37,7 @@ class PqeAdminAppServiceProvider extends ServiceProvider {
      */
     public const DASHBOARD = '/dashboard';
 	public const HOMEBLADE = '/home';
+	public const HOMEADMIN = '/admin';
 
     /**
      * Register any application services.

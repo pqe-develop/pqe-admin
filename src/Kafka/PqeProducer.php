@@ -5,7 +5,6 @@ namespace Pqe\Admin\Kafka;
 use Pqe\Admin\Models\KafkaJobs;
 use RdKafka\Conf;
 use RdKafka\Producer;
-use KafkaUtil;
 
 class PqeProducer
 {
@@ -32,7 +31,7 @@ class PqeProducer
         $topic = $this->producer->newTopic($topicParam);
 
         // set unique ID for Kafka
-        $kafkaId = KafkaUtil::uniqKafkaId();
+        $kafkaId = $this->uniqKafkaId();
         
         $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message, $kafkaId);
         $result = $this->producer->flush(1000);
@@ -87,18 +86,32 @@ class PqeProducer
 */
     private function createKafkaJob($kafkaId, $topicParam, $message, $error = null)
     {
-        $this->kafkaJobs = new KafkaJobs();
-        $this->kafkaJobs->kafka_type = 'Producer';
-        $this->kafkaJobs->kafka_id = $kafkaId;
-        $this->kafkaJobs->kafka_source = config('app.name');
-        $this->kafkaJobs->kafka_dest = $topicParam;
-        $this->kafkaJobs->kafka_payload = $message;
+        $kafkaJobs = new KafkaJobs();
+        $kafkaJobs->kafka_type = 'Producer';
+        $kafkaJobs->kafka_id = $kafkaId;
+        $kafkaJobs->kafka_source = config('app.name');
+        $kafkaJobs->kafka_dest = $topicParam;
+        $kafkaJobs->kafka_payload = $message;
         if (!empty($error)) {
-            $this->kafkaJobs->kafka_status = 'Error';
-            $this->kafkaJobs->kafka_message = $error;
+            $kafkaJobs->kafka_status = 'Error';
+            $kafkaJobs->kafka_message = $error;
         } else {
-            $this->kafkaJobs->kafka_status = 'Sent';
+            $kafkaJobs->kafka_status = 'Sent';
         }
-        $this->kafkaJobs->save();
+        $kafkaJobs->save();
+    }
+    
+    public function uniqKafkaId($length = 13)
+    {
+        $prefix = config('app.name');
+        // uniqid gives 13 chars, but you could adjust it to your needs.
+        if (function_exists("random_bytes")) {
+            $bytes = random_bytes(ceil($length / 2));
+        } elseif (function_exists("openssl_random_pseudo_bytes")) {
+            $bytes = openssl_random_pseudo_bytes(ceil($length / 2));
+        } else {
+            $bytes = uniqueid();
+        }
+        return $prefix . substr(bin2hex($bytes), 0, $length);
     }
 }

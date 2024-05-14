@@ -29,6 +29,7 @@ class PqeProducer
     {
         $returnValue = true;
         $topic = $this->producer->newTopic($topicParam);
+        $error = '';
 
         // set unique ID for Kafka
         $kafkaId = $this->uniqKafkaId();

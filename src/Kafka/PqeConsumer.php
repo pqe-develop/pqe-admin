@@ -69,13 +69,17 @@ class PqeConsumer
             $result = 'Class ' . $className . ' does not exist';
             $error = $result;
         } else {
-            $objectConsume = new $className();
-            if (!method_exists($objectConsume, $method)) {
-                //            throw new Exception('Function ' . $method . ' in class ' . $className . ' does not exist');
-                $result = 'Function ' . $method . ' in class ' . $className . ' does not exist';
-                $error = $result;
+            if (isset($payload['event']) && $payload['event'] === true) {
+                $className::dispatch($payload['properties']);
             } else {
-                $result = $objectConsume->$method($payload['kafkaId'], $payload['properties']);
+                $objectConsume = new $className();
+                if (!method_exists($objectConsume, $method)) {
+                    //            throw new Exception('Function ' . $method . ' in class ' . $className . ' does not exist');
+                    $result = 'Function ' . $method . ' in class ' . $className . ' does not exist';
+                    $error = $result;
+                } else {
+                    $result = $objectConsume->$method($payload['kafkaId'], $payload['properties']);
+                }
             }
         }
         $this->updateKafkaJobs($kafkaJob, $error);
@@ -90,11 +94,11 @@ class PqeConsumer
         $kafkaJobs->kafka_id = $message->key;
         $kafkaJobs->kafka_source = $this->topicName;
         $kafkaJobs->kafka_dest = config('app.name');
-        $kafkaJobs->kafka_ref = [
+        $kafkaJobs->kafka_ref = json_encode([
             'method' => $payload['method'],
             'class' => $payload['class']
-        ];
-        $kafkaJobs->kafka_payload = $payload;
+        ]);
+        $kafkaJobs->kafka_payload = json_encode($payload);
         $kafkaJobs->kafka_status = 'Start';
         $kafkaJobs->save();
 

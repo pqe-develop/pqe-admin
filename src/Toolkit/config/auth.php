@@ -84,12 +84,10 @@ return [
                 'model' => User::class,
                 'sync_passwords' => false,
                 'sync_attributes' => [
-                    'name' => 'cn',
                     'username' => 'samaccountname',
                 ],
                 'sync_existing' => [
                     'username' => 'samaccountname',
-                    'name' => 'cn',
                 ],
             ],
         ],

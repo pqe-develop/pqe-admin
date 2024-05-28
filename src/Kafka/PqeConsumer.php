@@ -64,9 +64,14 @@ class PqeConsumer
         $method = $payload['method'];
         $className = $payload['class'];
         $error = '';
+        $result = [
+            'message' => '',
+            'status' => 'success'
+        ];
         if (!class_exists($className)) {
             //            throw new Exception('Class ' . $className . ' does not exist');
-            $result = 'Class ' . $className . ' does not exist';
+            $result['message'] = 'Class ' . $className . ' does not exist';
+            $result['status'] = 'error';
             $error = $result;
         } else {
             if (isset($payload['event']) && $payload['event'] === true) {
@@ -75,10 +80,11 @@ class PqeConsumer
                 $objectConsume = new $className();
                 if (!method_exists($objectConsume, $method)) {
                     //            throw new Exception('Function ' . $method . ' in class ' . $className . ' does not exist');
-                    $result = 'Function ' . $method . ' in class ' . $className . ' does not exist';
-                    $error = $result;
+                    $result['message'] = 'Function ' . $method . ' in class ' . $className . ' does not exist';
+                    $result['status'] = 'error';
+                    $error = $result['message'];
                 } else {
-                    $result = $objectConsume->$method($payload['kafkaId'], $payload['properties']);
+                    $result['message'] = $objectConsume->$method($payload['kafkaId'], $payload['properties']);
                 }
             }
         }
@@ -102,7 +108,7 @@ class PqeConsumer
         $kafkaJobs->kafka_status = 'Start';
         $kafkaJobs->save();
 
-        return $message->key;
+        return $kafkaJobs;
     }
 
     public function updateKafkaJobs($kafkaJobs, $error = null)

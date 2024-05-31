@@ -1,7 +1,6 @@
 <?php
 
-namespace Pqe\Admin\Controllers;
-
+namespace App\Http\Controllers;
 use Inertia\Inertia;
 
 class DashboardController extends Controller {

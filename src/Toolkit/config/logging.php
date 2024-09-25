@@ -127,7 +127,7 @@ return [
         ],
 /* PQE Customize Logs */
 /*
-        // customize PQE
+        // customize PQEIS
         'hubspot' => [
             'driver' => 'single',
             'path' => storage_path('logs/hubspot.log'),
@@ -200,6 +200,21 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 1
         ],
+        
+        // customize PMSP/PANDORA2
+                'pm_status_change' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/pm/pm_status_change.log'),
+            'level' => 'info',
+            'days' => 30,
+        ],
+
+        'kafka_consume' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/kafka/kafka_consume.log'),
+            'level' => 'info',
+            'days' => 30,
+        ],
 */        
-    ]
+    ],
 ];

@@ -59,6 +59,29 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+    'suite_url' => env('SUITE_URL', 'http://localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed Origins
+    |--------------------------------------------------------------------------
+    |
+    | This is the list of allowed origins for CORS requests. If the origin of
+    | In env it must be a comma separated string of allowed origins.
+    */
+
+    'allowed_origins' => env('ALLOWED_ORIGINS', 'http://localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is used for SSO from Suite to Laravel. It must be the same as the Suite key.
+    */
+
+    'encryption_key' => env('ENCRYPTION_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -167,6 +190,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Pqe\Admin\Providers\KafkaServiceProvider::class,
         Pqe\Admin\Providers\PqeAdminAppServiceProvider::class, // create after all so package routes are at the end
@@ -188,5 +212,26 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'PqeLog' => Pqe\Admin\Logging\PqeLog::class,
     ])->toArray(),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Trusted Proxies
+    |--------------------------------------------------------------------------
+    |
+    | This is the list of trusted proxies that should be used to detect the
+    | client IP address. This will be used to determine the correct IP
+    | address of the client, even if they are behind a proxy.
+    |
+    | This is important for security; if you're using a load balancer or a
+    | reverse proxy, you should configure this to use the IP address of
+    | that device.
+    |
+    */
+
+    'trusted_proxies' => env('TRUSTED_PROXIES', null),
+
+    'proxy_url' => env('PROXY_URL'),
+    'proxy_scheme' => env('PROXY_SCHEME', 'https'),
+
 
 ];

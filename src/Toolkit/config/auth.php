@@ -46,7 +46,6 @@ return [
             'driver' => 'passport',
             'provider' => 'users'
         ],
-        // For the HRMS administrator By Vivek Gaidhane on July 17 2020
         'admin' => [
             'driver' => 'session',
             'provider' => 'ldap',
@@ -83,14 +82,8 @@ return [
             'database' => [
                 'model' => User::class,
                 'sync_passwords' => false,
-                'sync_attributes' => [
-                    'name' => 'cn',
-                    'username' => 'samaccountname',
-                ],
-                'sync_existing' => [
-                    'username' => 'samaccountname',
-                    'name' => 'cn',
-                ],
+		        'sync_attributes' => \Pqe\Admin\Ldap\AttributeHandler::class,
+		        'sync_existing' => \Pqe\Admin\Ldap\AttributeHandler::class,
             ],
         ],
         'pqeUsers' => [

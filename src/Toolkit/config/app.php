@@ -192,6 +192,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BroadcastServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+	    Reliese\Coders\CodersServiceProvider::class,
         Pqe\Admin\Providers\KafkaServiceProvider::class,
         Pqe\Admin\Providers\PqeAdminAppServiceProvider::class, // create after all so package routes are at the end
     ])->toArray(),

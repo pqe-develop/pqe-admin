@@ -17,7 +17,7 @@ class SendEmail extends Mailable {
      */
     public function __construct($email) {
         $this->emailbody = $email->body;
-        $this->subject = $email->subject;
+        $this->subject = $email->subject ?? 'Exception';
         $this->emailid = $email->id;
     }
 

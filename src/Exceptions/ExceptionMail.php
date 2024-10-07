@@ -94,7 +94,6 @@ class ExceptionMail {
             case 'hubspot' :
             case 'hubspot_scl' :
             case 'hubspot_wo' :
-                // $email->cc = 'g.stori@pqegroup.com';
                 $subject = 'Hubspot Exception - ' . ucfirst($env);
                 break;
             case 'infinity' :

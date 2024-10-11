@@ -116,11 +116,4 @@ class PqeProducer
         return $prefix . substr(bin2hex($bytes), 0, $length);
     }
 	
-	public static function getTopicName($prefix)
-    {
-        $topicName = $prefix;
-        $topicName .= config('app.env') == 'production' ? '-prod' : '-dev';
-        return $topicName;
-    }
-
 }

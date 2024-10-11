@@ -123,4 +123,13 @@ class PqeConsumer
         }
         $kafkaJobs->save();
     }
+	
+		public static function getTopicName($prefix)
+    {
+        $topicName = $prefix;
+        // $topicName .= config('app.env') == 'production' ? '-prod' : '-dev';
+        return $topicName;
+    }
+
+
 }

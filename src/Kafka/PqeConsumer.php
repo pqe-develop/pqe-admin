@@ -39,6 +39,8 @@ class PqeConsumer
                     if ($result['status'] == 'error') {
                         PqeLog::error($result['message']);
                     }
+					$this->consumer->commit($message);
+					$this->consumer->unsubscribe();
                     break;
                 case RD_KAFKA_RESP_ERR__PARTITION_EOF :
                     // End of partition, no more messages
